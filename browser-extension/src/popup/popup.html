@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./popup.css" />
+    <title>Epistemic Check</title>
+  </head>
+  <body>
+    <main>
+      <h1>Anti-Conspiracy Theorem</h1>
+      <button id="analyze-page" type="button">Analyze page</button>
+      <p id="analysis-status" class="status-pill">Ready</p>
+      <label class="toggle-row">
+        <input id="federation-enabled" type="checkbox" />
+        <span>Federation</span>
+      </label>
+      <p id="federation-status" class="status-pill">Federation: offline</p>
+      <section id="result-card" class="result-card" hidden>
+        <div class="metric-row">
+          <span>Verdict</span>
+          <strong id="result-verdict">-</strong>
+        </div>
+        <div class="metric-row">
+          <span>ACC</span>
+          <strong id="result-score">-</strong>
+        </div>
+        <div class="metric-row">
+          <span>Claims</span>
+          <strong id="result-claims">-</strong>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>

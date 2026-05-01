@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+build/
+dist/
+*.egg-info/
+
+browser-extension/node_modules/
+browser-extension/dist/
+browser-extension/release/
