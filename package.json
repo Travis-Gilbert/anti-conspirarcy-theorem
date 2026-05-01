@@ -1,13 +1,13 @@
 {
-  "name": "anti-conspirarcy-theorem",
+  "name": "act-theorem",
   "version": "0.1.0",
   "description": "Anti-Conspiracy Constraint reference implementation and browser extension packaging CLI.",
   "type": "module",
   "license": "MIT",
   "bin": {
+    "act-theorem": "./bin/anti-conspirarcy-theorem.js",
     "anti-conspirarcy-theorem": "./bin/anti-conspirarcy-theorem.js",
-    "anti-conspiracy-theorem": "./bin/anti-conspirarcy-theorem.js",
-    "act-theorem": "./bin/anti-conspirarcy-theorem.js"
+    "anti-conspiracy-theorem": "./bin/anti-conspirarcy-theorem.js"
   },
   "files": [
     "bin/",
@@ -38,8 +38,8 @@
   ],
   "scripts": {
     "extension:build": "node browser-extension/esbuild.config.mjs",
-    "extension:package": "node bin/anti-conspirarcy-theorem.js extension package --out browser-extension/release/anti-conspirarcy-theorem-extension.zip",
-    "extension:unpack": "node bin/anti-conspirarcy-theorem.js extension unpack --out browser-extension/release/unpacked",
+    "extension:package": "node bin/anti-conspirarcy-theorem.js package --out browser-extension/release/anti-conspirarcy-theorem-extension.zip",
+    "extension:unpack": "node bin/anti-conspirarcy-theorem.js install --out browser-extension/release/unpacked",
     "lint:extension": "npm --prefix browser-extension run lint",
     "test:extension": "npm --prefix browser-extension test",
     "test:python": "python3 -m pytest",

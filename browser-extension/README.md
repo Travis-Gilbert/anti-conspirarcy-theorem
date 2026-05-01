@@ -21,7 +21,7 @@ The extension includes:
 From the published npm package:
 
 ```bash
-npx anti-conspirarcy-theorem extension unpack --out ./anti-conspirarcy-theorem-extension
+npx act-theorem install --out ./anti-conspirarcy-theorem-extension
 ```
 
 Then open `chrome://extensions`, enable Developer mode, and load the unpacked folder.

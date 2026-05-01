@@ -34,7 +34,7 @@ python -m pip install -e ".[dev]"
 The npm package exposes a small CLI for extension install artifacts:
 
 ```bash
-npx anti-conspirarcy-theorem extension unpack --out ./anti-conspirarcy-theorem-extension
+npx act-theorem install --out ./anti-conspirarcy-theorem-extension
 ```
 
 Then open `chrome://extensions`, enable Developer mode, click **Load unpacked**, and choose `./anti-conspirarcy-theorem-extension`.
@@ -42,15 +42,17 @@ Then open `chrome://extensions`, enable Developer mode, click **Load unpacked**,
 To create a downloadable ZIP instead:
 
 ```bash
-npx anti-conspirarcy-theorem extension package --out ./anti-conspirarcy-theorem-extension.zip
+npx act-theorem package --out ./anti-conspirarcy-theorem-extension.zip
 ```
 
-The package also publishes correctly spelled command aliases:
+The package also exposes longer binary aliases when installed locally or globally:
 
 ```bash
-npx anti-conspiracy-theorem extension instructions
-npx act-theorem extension instructions
+npm install -g act-theorem
+anti-conspiracy-theorem extension instructions
 ```
+
+`npx install act` is not a viable npm command for this package: `npx` treats `install` as the package name in that phrase, and the unscoped `act` package name is already taken on npm. `npx act-theorem install` is the shortest clean public command available without a scoped package.
 
 ## Quick usage
 
@@ -123,7 +125,7 @@ npm pack --dry-run
 npm publish --access public
 ```
 
-After publishing, people can use the `npx anti-conspirarcy-theorem ...` commands without cloning the repo.
+After publishing, people can use the `npx act-theorem ...` commands without cloning the repo.
 
 ## License
 

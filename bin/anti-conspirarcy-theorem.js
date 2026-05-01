@@ -26,6 +26,18 @@ async function main() {
     return;
   }
 
+  if (area === "install" || area === "unpack") {
+    const options = parseOptions(args.slice(1));
+    await installExtension(options.out);
+    return;
+  }
+
+  if (area === "package" || area === "zip") {
+    const options = parseOptions(args.slice(1));
+    await zipExtension(options.out);
+    return;
+  }
+
   if (area !== "extension") {
     fail(`Unknown command area: ${area}`);
   }
@@ -42,18 +54,11 @@ async function main() {
     return;
   }
   if (command === "package" || command === "zip") {
-    await buildExtension();
-    const outPath = path.resolve(process.cwd(), options.out || defaultZipName);
-    await packageExtension(outPath);
-    console.log(`Wrote ${outPath}`);
+    await zipExtension(options.out);
     return;
   }
-  if (command === "unpack") {
-    await buildExtension();
-    const outDir = path.resolve(process.cwd(), options.out || "anti-conspirarcy-theorem-extension");
-    await unpackExtension(outDir);
-    console.log(`Wrote load-unpacked extension to ${outDir}`);
-    console.log("Open chrome://extensions, enable Developer mode, then Load unpacked from that folder.");
+  if (command === "unpack" || command === "install") {
+    await installExtension(options.out);
     return;
   }
   if (command === "instructions") {
@@ -62,6 +67,21 @@ async function main() {
   }
 
   fail(`Unknown extension command: ${command}`);
+}
+
+async function installExtension(out) {
+  await buildExtension();
+  const outDir = path.resolve(process.cwd(), out || "anti-conspirarcy-theorem-extension");
+  await unpackExtension(outDir);
+  console.log(`Wrote load-unpacked extension to ${outDir}`);
+  console.log("Open chrome://extensions, enable Developer mode, then Load unpacked from that folder.");
+}
+
+async function zipExtension(out) {
+  await buildExtension();
+  const outPath = path.resolve(process.cwd(), out || defaultZipName);
+  await packageExtension(outPath);
+  console.log(`Wrote ${outPath}`);
 }
 
 function parseOptions(args) {
@@ -186,14 +206,14 @@ function printHelp() {
   console.log(`Anti-Conspiracy Theorem
 
 Usage:
-  npx anti-conspirarcy-theorem extension package [--out ./extension.zip]
-  npx anti-conspirarcy-theorem extension unpack [--out ./extension-folder]
-  npx anti-conspirarcy-theorem extension build
-  npx anti-conspirarcy-theorem extension instructions
+  npx act-theorem install [--out ./extension-folder]
+  npx act-theorem package [--out ./extension.zip]
+  npx act-theorem extension build
+  npx act-theorem extension instructions
 
-Aliases:
-  npx anti-conspiracy-theorem ...
-  npx act-theorem ...
+The package also exposes installed binary aliases:
+  anti-conspirarcy-theorem
+  anti-conspiracy-theorem
 `);
 }
 
@@ -218,7 +238,7 @@ function printInstallInstructions() {
   console.log(`Chrome local install:
 
 1. Run:
-   npx anti-conspirarcy-theorem extension unpack --out ./anti-conspirarcy-theorem-extension
+   npx act-theorem install --out ./anti-conspirarcy-theorem-extension
 
 2. Open:
    chrome://extensions
@@ -229,7 +249,7 @@ function printInstallInstructions() {
    ./anti-conspirarcy-theorem-extension
 
 Release ZIP:
-   npx anti-conspirarcy-theorem extension package --out ./anti-conspirarcy-theorem-extension.zip
+   npx act-theorem package --out ./anti-conspirarcy-theorem-extension.zip
 `);
 }
 
