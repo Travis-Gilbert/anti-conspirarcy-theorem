@@ -1,0 +1,58 @@
+{
+  "name": "anti-conspirarcy-theorem",
+  "version": "0.1.0",
+  "description": "Anti-Conspiracy Constraint reference implementation and browser extension packaging CLI.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "anti-conspirarcy-theorem": "./bin/anti-conspirarcy-theorem.js",
+    "anti-conspiracy-theorem": "./bin/anti-conspirarcy-theorem.js",
+    "act-theorem": "./bin/anti-conspirarcy-theorem.js"
+  },
+  "files": [
+    "bin/",
+    "browser-extension/assets/",
+    "browser-extension/docs/",
+    "browser-extension/src/background/*.js",
+    "browser-extension/src/content/*.js",
+    "browser-extension/src/content/*.css",
+    "browser-extension/src/inference/*.js",
+    "browser-extension/src/inference/data/domains_v1.json",
+    "browser-extension/src/popup/*.css",
+    "browser-extension/src/popup/*.html",
+    "browser-extension/src/popup/*.js",
+    "browser-extension/src/shared/*.css",
+    "browser-extension/src/shared/*.js",
+    "browser-extension/esbuild.config.mjs",
+    "browser-extension/eslint.config.js",
+    "browser-extension/manifest.json",
+    "browser-extension/package.json",
+    "browser-extension/package-lock.json",
+    "browser-extension/README.md",
+    "docs/",
+    "tests/*.py",
+    "theseus_acc/**/*.py",
+    "LICENSE",
+    "README.md",
+    "pyproject.toml"
+  ],
+  "scripts": {
+    "extension:build": "node browser-extension/esbuild.config.mjs",
+    "extension:package": "node bin/anti-conspirarcy-theorem.js extension package --out browser-extension/release/anti-conspirarcy-theorem-extension.zip",
+    "extension:unpack": "node bin/anti-conspirarcy-theorem.js extension unpack --out browser-extension/release/unpacked",
+    "lint:extension": "npm --prefix browser-extension run lint",
+    "test:extension": "npm --prefix browser-extension test",
+    "test:python": "python3 -m pytest",
+    "test": "npm run test:python && npm run lint:extension && npm run test:extension"
+  },
+  "dependencies": {
+    "esbuild": "0.25.4",
+    "yazl": "3.3.1"
+  },
+  "devDependencies": {
+    "eslint": "9.25.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

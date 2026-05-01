@@ -1,12 +1,11 @@
 __pycache__/
+*.py[cod]
 .pytest_cache/
 .ruff_cache/
 .venv/
 node_modules/
-build/
-dist/
-*.egg-info/
 
 browser-extension/node_modules/
 browser-extension/dist/
 browser-extension/release/
+browser-extension/src/inference/data/contract_fixtures.js

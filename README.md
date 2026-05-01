@@ -29,6 +29,29 @@ Claims with `ACC < threshold` (default `0.55`) are flagged as `suspect`.
 python -m pip install -e ".[dev]"
 ```
 
+## NPX Installer
+
+The npm package exposes a small CLI for extension install artifacts:
+
+```bash
+npx anti-conspirarcy-theorem extension unpack --out ./anti-conspirarcy-theorem-extension
+```
+
+Then open `chrome://extensions`, enable Developer mode, click **Load unpacked**, and choose `./anti-conspirarcy-theorem-extension`.
+
+To create a downloadable ZIP instead:
+
+```bash
+npx anti-conspirarcy-theorem extension package --out ./anti-conspirarcy-theorem-extension.zip
+```
+
+The package also publishes correctly spelled command aliases:
+
+```bash
+npx anti-conspiracy-theorem extension instructions
+npx act-theorem extension instructions
+```
+
 ## Quick usage
 
 ```python
@@ -89,6 +112,18 @@ browser-extension/
 ```
 
 The extension build is deterministic by default. It uses the ACC JavaScript scoring path and can run without a model download. The WebLLM/Gemma path remains optional until a public model artifact URL is configured.
+
+## Publishing
+
+When ready to publish the `npx` package:
+
+```bash
+npm login
+npm pack --dry-run
+npm publish --access public
+```
+
+After publishing, people can use the `npx anti-conspirarcy-theorem ...` commands without cloning the repo.
 
 ## License
 
