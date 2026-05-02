@@ -16,6 +16,25 @@ The following batches are intentionally deferred after completing B1 and B2:
 - Batch 3 and 4 require runtime validation in Chrome with WebGPU and service worker lifecycle behavior.
 - Batch 5 to 7 require browser-level interaction QA and accessibility validation on real pages.
 
+## Implementation status
+
+Implemented in `codex/act-deferred-work`:
+
+- Batch 3 WebLLM runner, prompt wiring, model progress, and singleton loader.
+- Batch 4 typed settings, Tavily client, and queued background analysis pipeline.
+- Batch 5 in-page rail, paragraph mapping refresh, closed shadow root, and stacked dots.
+- Batch 6 claim panel hover, pin, Escape, outside click, and focus return behavior.
+- Batch 7 popup onboarding, model loading, settings persistence, and analysis controls.
+
+Live validation still required before release:
+
+- The shipping config points at public WebLLM Gemma2 artifacts that return 200 today.
+- To use the owned-domain export later, publish the MLC export at `https://travisgilbert.me/act`, including the configured wasm library, then switch the config back after verifying both URLs return 200.
+- The runner preflights model URLs and falls back to a second public WebLLM-compatible model so onboarding fails soft instead of hard.
+- Load the unpacked extension in Chrome with WebGPU enabled and confirm warm cache startup.
+- Run one Tavily-enabled analysis with a real user key.
+- Exercise three real article pages and verify rail alignment, popup flow, and keyboard behavior.
+
 ## Execution order
 
 ### Phase A: Batch 3 readiness (blocking)
@@ -44,6 +63,7 @@ Acceptance checks:
    - Top 3 claim selection by specificity anchors.
    - Sequential rate limited calls.
    - Per claim error isolation and null fallback.
+   - Theseus `/api/v2/theseus/web/search/` fallback when Tavily is unavailable, empty, or fails.
 3. Replace placeholder service worker with full pipeline:
    - model ready checks
    - classify, extract, optional tavily, deterministic score
@@ -54,6 +74,7 @@ Acceptance checks:
 - `MSG_ANALYZE_PAGE` returns full ScoreResult.
 - Tavily disabled still returns valid score with null temporal redistribution.
 - One claim failure in Tavily does not abort result.
+- Theseus browser search can recover temporal evidence when Tavily is unavailable.
 
 ### Phase C: Batch 5 in-page rail system
 

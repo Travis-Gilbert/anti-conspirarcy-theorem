@@ -1,7 +1,9 @@
 import {
   MSG_ANALYSIS_RESULT,
   MSG_COLLECT_PAGE,
+  MSG_SETTINGS_UPDATED,
 } from "../shared/messages.js";
+import { getSettings } from "../shared/storage.js";
 import {
   extractPageText,
   findSegmentForCharRange,
@@ -13,6 +15,16 @@ let lastSegments = [];
 let lastScoreResult = null;
 let renderScheduled = false;
 const rail = new GutterRail();
+
+async function applySettings() {
+  const settings = await getSettings();
+  rail.setState({
+    side: settings.railPosition,
+    visible: settings.railVisible,
+    motion: settings.motionOverride,
+    typography: settings.typography,
+  });
+}
 
 function serializableSegments(segments) {
   return segments.map((segment) => ({
@@ -76,8 +88,16 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     sendResponse({ ok: true });
     return true;
   }
+  if (message?.type === MSG_SETTINGS_UPDATED) {
+    applySettings()
+      .then(() => sendResponse({ ok: true }))
+      .catch((error) => sendResponse({ ok: false, error: String(error?.message || error) }));
+    return true;
+  }
   return false;
 });
 
 window.addEventListener("scroll", scheduleRenderRefresh, { passive: true });
 window.addEventListener("resize", scheduleRenderRefresh, { passive: true });
+
+applySettings().catch(() => null);

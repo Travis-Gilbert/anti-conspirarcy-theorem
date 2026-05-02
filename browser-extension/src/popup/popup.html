@@ -8,9 +8,19 @@
   </head>
   <body>
     <main>
-      <h1>Anti-Conspiracy Theorem</h1>
+      <header class="popup-head">
+        <h1>Anti-Conspiracy Theorem</h1>
+        <p id="analysis-status" class="status-pill">Ready</p>
+      </header>
+      <section id="onboarding-card" class="panel" hidden>
+        <div class="metric-row">
+          <span>Model</span>
+          <strong id="model-state">Not loaded</strong>
+        </div>
+        <progress id="model-progress" max="100" value="0"></progress>
+        <button id="start-model-load" type="button">Prepare model</button>
+      </section>
       <button id="analyze-page" type="button">Analyze page</button>
-      <p id="analysis-status" class="status-pill">Ready</p>
       <label class="toggle-row">
         <input id="federation-enabled" type="checkbox" />
         <span>Federation</span>
@@ -29,6 +39,48 @@
           <span>Claims</span>
           <strong id="result-claims">-</strong>
         </div>
+      </section>
+      <section class="panel settings-panel" aria-label="Settings">
+        <h2>Settings</h2>
+        <label class="field-row">
+          <span>Tavily key</span>
+          <input id="tavily-key" type="password" autocomplete="off" />
+        </label>
+        <label class="toggle-row">
+          <input id="tavily-enabled" type="checkbox" />
+          <span>Tavily</span>
+        </label>
+        <label class="toggle-row toggle-row--sub">
+          <input id="theseus-fallback-enabled" type="checkbox" />
+          <span>Theseus fallback</span>
+        </label>
+        <label class="field-row">
+          <span>Rail</span>
+          <select id="rail-position">
+            <option value="right">Right</option>
+            <option value="left">Left</option>
+          </select>
+        </label>
+        <label class="toggle-row">
+          <input id="rail-visible" type="checkbox" />
+          <span>Rail visible</span>
+        </label>
+        <label class="field-row">
+          <span>Motion</span>
+          <select id="motion-override">
+            <option value="system">System</option>
+            <option value="reduce">Reduced</option>
+            <option value="allow">Allowed</option>
+          </select>
+        </label>
+        <label class="field-row">
+          <span>Type</span>
+          <select id="typography">
+            <option value="system">System</option>
+            <option value="serif">Serif</option>
+            <option value="compact">Compact</option>
+          </select>
+        </label>
       </section>
     </main>
     <script type="module" src="./popup.js"></script>

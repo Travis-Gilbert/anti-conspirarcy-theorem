@@ -51,7 +51,7 @@ const shared = {
     ".css": "css",
     ".woff2": "file",
   },
-  external: ["node:fs/promises"],
+  external: ["node:fs/promises", "url", "fs", "path", "crypto"],
   plugins: [copyStaticPlugin],
 };
 

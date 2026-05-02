@@ -1,19 +1,29 @@
 import { processFederationForScore } from "../inference/federation-client.js";
 import { loadDomainList } from "../inference/domain-list.js";
 import { scoreText } from "../inference/scoring.js";
+import { getTavilyApiKey, getSettings } from "../shared/storage.js";
+import { getModelState, getRunner, subscribeToProgress } from "./model-loader.js";
+import { tavilyLookup } from "./tavily-client.js";
 import {
   MSG_ANALYSIS_RESULT,
   MSG_ANALYZE_PAGE,
   MSG_COLLECT_PAGE,
   MSG_ERROR,
+  MSG_GET_MODEL_STATE,
+  MSG_MODEL_PROGRESS,
   MSG_MODEL_READY,
   MSG_START_MODEL_LOAD,
 } from "../shared/messages.js";
+import { MODEL_VERSION } from "../shared/config.js";
 
 const MAX_TEXT_LENGTH = 24000;
-const MAX_CLAIMS = 8;
+const tabQueues = new Map();
 
 console.log("Anti-Conspiracy Theorem service worker loaded");
+
+subscribeToProgress((progress) => {
+  chrome.runtime.sendMessage({ type: MSG_MODEL_PROGRESS, progress }).catch(() => null);
+});
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message && message.ping === true) {
@@ -21,11 +31,19 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     return true;
   }
   if (message?.type === MSG_START_MODEL_LOAD) {
-    sendResponse({
-      ok: true,
-      type: MSG_MODEL_READY,
-      mode: "deterministic-acc",
-    });
+    getRunner()
+      .then((runner) => sendResponse({
+        ok: true,
+        type: MSG_MODEL_READY,
+        mode: "webllm-gemma",
+        state: getModelState(),
+        model: runner.getModelInfo(),
+      }))
+      .catch((error) => sendResponse({ ok: false, type: MSG_ERROR, error: String(error?.message || error) }));
+    return true;
+  }
+  if (message?.type === MSG_GET_MODEL_STATE) {
+    sendResponse({ ok: true, state: getModelState() });
     return true;
   }
   if (message?.type === MSG_ANALYZE_PAGE) {
@@ -49,10 +67,51 @@ async function analyzeActivePage() {
   if (!tab?.id) {
     throw new Error("No active tab available");
   }
+  return enqueueTabJob(tab.id, () => analyzeTab(tab));
+}
+
+function enqueueTabJob(tabId, task) {
+  const previous = tabQueues.get(tabId) || Promise.resolve();
+  const next = previous
+    .catch(() => null)
+    .then(task)
+    .finally(() => {
+      if (tabQueues.get(tabId) === next) {
+        tabQueues.delete(tabId);
+      }
+    });
+  tabQueues.set(tabId, next);
+  return next;
+}
+
+async function analyzeTab(tab) {
+  const startedAt = Date.now();
+  const tabId = tab.id;
   const page = await collectPage(tab.id);
-  const extraction = buildExtraction(page);
-  const contentType = classifyContentType(page.text);
-  const score = scoreText(extraction, null, contentType, 0.72);
+  const pageText = String(page.text || "").slice(0, MAX_TEXT_LENGTH);
+  const runner = await getRunner();
+  if (runner.getState() !== "ready") {
+    throw new Error("Model is not ready");
+  }
+  const pageMeta = {
+    url: page.url,
+    title: page.title,
+    segmentCount: page.segments?.length || 1,
+  };
+  const classification = await runner.classifyContent(pageText, pageMeta);
+  const contentType = classification.content_type;
+  const extraction = contentType === "fiction"
+    ? emptyExtraction(pageMeta)
+    : await runner.extractFeatures(pageText, contentType, pageMeta);
+  const settings = await getSettings();
+  const tavilyApiKey = await getTavilyApiKey();
+  const tavilyResult = settings.tavilyEnabled && contentType !== "fiction"
+    ? await tavilyLookup(extraction, {
+      apiKey: tavilyApiKey,
+      allowTheseusFallback: settings.theseusSearchFallbackEnabled,
+    })
+    : null;
+  const score = scoreText(extraction, tavilyResult, contentType, classification.confidence);
   const scoreResult = await processFederationForScore({
     ...score,
     page_url: page.url,
@@ -60,10 +119,15 @@ async function analyzeActivePage() {
     meta: {
       ...score.meta,
       runtime: "browser-extension",
-      extraction_mode: "deterministic-page-heuristic",
+      extraction_mode: "webllm-gemma",
+      model_version: MODEL_VERSION,
+      model_state: getModelState().state,
+      tavily_enabled: Boolean(settings.tavilyEnabled && tavilyApiKey),
+      theseus_search_fallback_enabled: Boolean(settings.tavilyEnabled && settings.theseusSearchFallbackEnabled),
+      elapsed_ms: Math.max(0, Date.now() - startedAt),
     },
   });
-  await chrome.tabs.sendMessage(tab.id, { type: MSG_ANALYSIS_RESULT, scoreResult }).catch(() => null);
+  await chrome.tabs.sendMessage(tabId, { type: MSG_ANALYSIS_RESULT, scoreResult }).catch(() => null);
   return scoreResult;
 }
 
@@ -83,40 +147,25 @@ async function collectPage(tabId) {
   return response;
 }
 
-function buildExtraction(page) {
-  const text = String(page.text || "").slice(0, MAX_TEXT_LENGTH);
-  const url = String(page.url || "");
-  const domain = hostnameFromUrl(url);
-  const sentences = splitSentences(text);
-  const claims = selectClaimSentences(sentences).map((sentence, index) => ({
-    id: `c${index}`,
-    text: sentence.text,
-    char_start: sentence.start,
-    char_end: sentence.end,
-    specificity_anchors: specificityAnchors(sentence.text),
-    citation_kind: citationKindForSentence(sentence.text, domain),
-    cited_source_refs: ["page-source"],
-    contradicts_consensus: null,
-    engages_consensus: false,
-    source_tier_refs: ["page-source"],
-    citation_chain_markers: {
-      self_reinforcing_citations: selfReferenceScore(sentence.text, domain),
-      total_citation_chains_described: 1,
-    },
-    falsifiability: falsifiabilityForSentence(sentence.text),
-  }));
-
+function emptyExtraction(pageMeta = {}) {
   return {
-    claims,
+    claims: [],
     article_level: {
-      checkable_facts_per_paragraph: checkableFactsPerSegment(page.segments || []),
-      rhetorical_red_flags: rhetoricalFlags(text),
+      checkable_facts_per_paragraph: [],
+      rhetorical_red_flags: {
+        urgency_framing: 0,
+        suppressed_truth_narrative: 0,
+        emotional_appeal_decoupled: 0,
+        identity_based_dismissal: 0,
+        false_precision: 0,
+        appeal_to_hidden_knowledge: 0,
+      },
     },
     cited_sources: [{
       id: "page-source",
-      domain,
-      name: page.title || domain || "Current page",
-      tier: domain ? "secondary" : "unknown",
+      domain: hostnameFromUrl(pageMeta.url || ""),
+      name: pageMeta.title || "Current page",
+      tier: "secondary",
     }],
   };
 }
@@ -127,112 +176,4 @@ function hostnameFromUrl(raw) {
   } catch {
     return "unknown";
   }
-}
-
-function splitSentences(text) {
-  const rows = [];
-  const regex = /[^.!?]+[.!?]+|[^.!?]+$/g;
-  let match = regex.exec(text);
-  while (match) {
-    const sentence = match[0].replace(/\s+/g, " ").trim();
-    if (sentence.length >= 50 && sentence.length <= 360) {
-      rows.push({
-        text: sentence,
-        start: match.index,
-        end: match.index + match[0].length,
-      });
-    }
-    match = regex.exec(text);
-  }
-  return rows;
-}
-
-function selectClaimSentences(sentences) {
-  const ranked = [...sentences].sort((a, b) => claimSignal(b.text) - claimSignal(a.text));
-  return ranked.slice(0, MAX_CLAIMS).sort((a, b) => a.start - b.start);
-}
-
-function claimSignal(sentence) {
-  const anchors = specificityAnchors(sentence).length;
-  const numerals = /\d/.test(sentence) ? 1 : 0;
-  const assertion = /\b(is|are|was|were|will|causes|caused|shows|proves|found|reported)\b/i.test(sentence) ? 1 : 0;
-  return anchors + numerals + assertion;
-}
-
-function specificityAnchors(sentence) {
-  const tokens = String(sentence || "").match(/[A-Za-z0-9][A-Za-z0-9-]{4,}/g) || [];
-  const anchors = [];
-  for (const token of tokens) {
-    const cleaned = token.toLowerCase();
-    if (!anchors.includes(cleaned) && (/\d/.test(cleaned) || cleaned.length >= 8)) {
-      anchors.push(cleaned);
-    }
-    if (anchors.length >= 4) {
-      break;
-    }
-  }
-  return anchors;
-}
-
-function citationKindForSentence(sentence, domain) {
-  if (/study|dataset|court|filing|report|paper|survey|census|trial/i.test(sentence)) {
-    return "direct_primary";
-  }
-  if (domain && domain !== "unknown") {
-    return "secondary";
-  }
-  return "unanchored";
-}
-
-function selfReferenceScore(sentence, domain) {
-  if (!domain || domain === "unknown") {
-    return 1;
-  }
-  return sentence.toLowerCase().includes(domain.split(".")[0]) ? 1 : 0;
-}
-
-function falsifiabilityForSentence(sentence) {
-  if (/\b(always|never|everyone|no one|they|elites|hidden|secret)\b/i.test(sentence)) {
-    return "vague";
-  }
-  if (/\b\d|percent|according to|reported|measured|dated|published\b/i.test(sentence)) {
-    return "falsifiable";
-  }
-  return "vague";
-}
-
-function checkableFactsPerSegment(segments) {
-  const values = (segments || []).map((segment) => {
-    const text = String(segment.text || "");
-    const count = (text.match(/\b\d|according to|reported|published|study|data|survey|court|filing/gi) || []).length;
-    return Math.min(3, count);
-  });
-  return values.length ? values : [0];
-}
-
-function rhetoricalFlags(text) {
-  return {
-    urgency_framing: hasAny(text, ["wake up", "before it is too late", "urgent", "now or never"]),
-    suppressed_truth_narrative: hasAny(text, ["truth they hide", "cover up", "suppressed", "censored"]),
-    emotional_appeal_decoupled: hasAny(text, ["betrayal", "disgusting", "evil", "panic"]),
-    identity_based_dismissal: hasAny(text, ["mainstream sheep", "enemy of the people", "traitor"]),
-    false_precision: hasAny(text, ["99.999", "exactly 100", "guaranteed"]),
-    appeal_to_hidden_knowledge: hasAny(text, ["secret", "hidden knowledge", "what they do not want you to know"]),
-  };
-}
-
-function hasAny(text, needles) {
-  const normalized = String(text || "").toLowerCase();
-  return needles.some((needle) => normalized.includes(needle)) ? 1 : 0;
-}
-
-function classifyContentType(text) {
-  const sample = String(text || "").slice(0, 4000);
-  if (/\b(i think|i believe|opinion|editorial|should|ought)\b/i.test(sample)) {
-    return "opinion";
-  }
-  if (/\b(definition|overview|guide|reference|manual)\b/i.test(sample)) {
-    return "reference";
-  }
-  return "factual";
 }
