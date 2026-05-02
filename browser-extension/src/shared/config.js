@@ -1,5 +1,5 @@
-export const MLC_MANIFEST_URL = "https://huggingface.co/mlc-ai/gemma-2-2b-it-q4f16_1-MLC";
-export const MLC_MODEL_LIB_URL = "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_80/gemma-2-2b-it-q4f16_1-ctx4k_cs1k-webgpu.wasm";
+export const MLC_MANIFEST_URL = "https://travisgilbert.me/act";
+export const MLC_MODEL_LIB_URL = "https://travisgilbert.me/act/gemma-2-2b-it-q4f16_1-ctx4k_cs1k-webgpu.wasm";
 export const MLC_FALLBACK_MANIFEST_URL = "https://huggingface.co/mlc-ai/Llama-3.2-1B-Instruct-q4f16_1-MLC";
 export const MLC_FALLBACK_MODEL_LIB_URL = "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_80/Llama-3.2-1B-Instruct-q4f16_1-ctx4k_cs1k-webgpu.wasm";
 export const MLC_FALLBACK_MODEL_VERSION = "Llama-3.2-1B-Instruct-q4f16_1-MLC";

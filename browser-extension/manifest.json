@@ -32,7 +32,7 @@
     }
   ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self' http://127.0.0.1:7323 https://api.tavily.com https://huggingface.co https://raw.githubusercontent.com https://travisgilbert.me"
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self' http://127.0.0.1:7323 https://api.tavily.com https://huggingface.co https://raw.githubusercontent.com https://cas-bridge.xethub.hf.co https://travisgilbert.me"
   },
   "icons": {
     "16": "assets/icons/icon-16.png",

@@ -28,8 +28,8 @@ Implemented in `codex/act-deferred-work`:
 
 Live validation still required before release:
 
-- The shipping config points at public WebLLM Gemma2 artifacts that return 200 today.
-- To use the owned-domain export later, publish the MLC export at `https://travisgilbert.me/act`, including the configured wasm library, then switch the config back after verifying both URLs return 200.
+- The shipping config points at `https://travisgilbert.me/act`, which proxies the public WebLLM Gemma2 artifact set through the website deployment.
+- The website `/act` route must continue to return 200 for the route descriptor, `/act/resolve/main/mlc-chat-config.json`, and `/act/gemma-2-2b-it-q4f16_1-ctx4k_cs1k-webgpu.wasm`.
 - The runner preflights model URLs and falls back to a second public WebLLM-compatible model so onboarding fails soft instead of hard.
 - Load the unpacked extension in Chrome with WebGPU enabled and confirm warm cache startup.
 - Run one Tavily-enabled analysis with a real user key.
