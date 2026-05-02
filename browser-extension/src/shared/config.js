@@ -1,5 +1,5 @@
 export const MLC_MANIFEST_URL = "https://example.invalid/epistemic-check-models/v1/manifest.json";
-export const ALGORITHM_VERSION = "1.0.0";
+export const ALGORITHM_VERSION = "2.0.0";
 export const MODEL_VERSION = "gemma-4-e4b-epistemic-dpo-v1";
 export const FEDERATION_PEER_URL = "http://127.0.0.1:7323";
 export const FEDERATION_PRIMARY_URL = "https://travisgilbert.me";

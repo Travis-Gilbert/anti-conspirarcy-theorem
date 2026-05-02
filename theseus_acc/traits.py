@@ -37,6 +37,25 @@ def _support_successors(graph: nx.DiGraph, node) -> list:
     return out
 
 
+def support_neighbors(graph: nx.DiGraph, claim) -> list:
+    """Immediate support neighborhood around a claim, deduplicated in graph order."""
+    seen = set()
+    neighbors = []
+    for node in [*_support_predecessors(graph, claim), *_support_successors(graph, claim)]:
+        if node in seen:
+            continue
+        seen.add(node)
+        neighbors.append(node)
+    return neighbors
+
+
+def support_source_count(graph: nx.DiGraph, claim) -> int:
+    source_ids = set()
+    for node in support_neighbors(graph, claim):
+        source_ids.update(str(s) for s in (graph.nodes[node].get('source_ids') or []))
+    return len(source_ids)
+
+
 def _parse_timestamp(value) -> dt.datetime | None:
     if value is None:
         return None
@@ -154,6 +173,38 @@ def support_ratio(graph: nx.DiGraph, claim, *, epsilon: float = 1e-6) -> float:
 
     denom = float(support_n + contradict_n) + float(epsilon)
     return max(0.0, min(1.0, float(support_n) / denom))
+
+
+def evidence_volume(
+    graph: nx.DiGraph,
+    claim,
+    *,
+    scale: float = 6.0,
+) -> float:
+    """Saturating support volume from direct supports, distinct sources, and roots."""
+    support_nodes = support_neighbors(graph, claim)
+    if not support_nodes:
+        return 0.0
+
+    source_ids = set()
+    verified_supports = 0
+    textful_supports = 0
+    for node in support_nodes:
+        data = graph.nodes[node]
+        source_ids.update(str(s) for s in (data.get('source_ids') or []))
+        status = str(data.get('epistemic_status', '')).strip().lower()
+        if status in _VERIFIED_STATUSES:
+            verified_supports += 1
+        if str(data.get('text', '') or '').strip():
+            textful_supports += 1
+
+    evidence_units = (
+        len(support_nodes)
+        + min(len(source_ids), len(support_nodes))
+        + verified_supports
+        + 0.25 * textful_supports
+    )
+    return max(0.0, min(1.0, 1.0 - math.exp(-evidence_units / max(scale, 1e-6))))
 
 
 def _tokenize(text: str) -> list[str]:

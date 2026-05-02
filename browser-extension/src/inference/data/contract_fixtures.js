@@ -7,80 +7,230 @@ export const FIXTURES = [
     "content_type": "factual",
     "description": "Factual article with strong sourcing and low rhetoric flags.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.862836,
+      "verdict": "trustworthy",
+      "linear_score": 0.871391,
+      "geometric_core": 0.846947,
+      "penalty_total": 0,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 1.0,
-            "claim_falsifiability": 1.0,
-            "claim_specificity": 1.0,
-            "consensus_alignment": 1.0,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 1.0,
-            "root_depth": 1.0,
-            "source_independence": 0.666667,
-            "source_tier": 1.0,
-            "temporal_spread": 0.59959
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.923209.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 176.92,88.28 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.923209</text>\n</svg>",
-          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: temporal_spread, source_independence.",
-          "score": 0.923209,
-          "text": "Independent labs replicated the result in 2024.",
-          "verdict": "trustworthy"
+          "id": "requires_independent_sources",
+          "passed": true,
+          "value": 0.666667,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
         },
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.666667,
-            "claim_falsifiability": 1.0,
-            "claim_specificity": 1.0,
-            "consensus_alignment": 1.0,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 1.0,
-            "root_depth": 1.0,
-            "source_independence": 0.666667,
-            "source_tier": 1.0,
-            "temporal_spread": 0.4
-          },
-          "id": "c1",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.848401.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.848401</text>\n</svg>",
-          "rationale": "Trustworthy signal: strong rhetorical_red_flags, claim_falsifiability. Minor weakness: temporal_spread, source_independence.",
-          "score": 0.848401,
-          "text": "The report cites two peer-reviewed studies.",
-          "verdict": "trustworthy"
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.730854,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": 0.499795,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
         }
       ],
+      "penalties": [],
+      "actions": [],
       "content_type": "factual",
+      "weight_profile_used": "factual",
       "features": {
-        "citation_chain_closure": 1.0,
-        "claim_falsifiability": 1.0,
-        "claim_specificity": 1.0,
-        "consensus_alignment": 1.0,
-        "external_support_ratio": 1.0,
-        "rhetorical_red_flags": 1.0,
-        "root_depth": 1.0,
+        "claim_specificity": 1,
+        "root_depth": 1,
         "source_independence": 0.666667,
-        "source_tier": 1.0,
-        "temporal_spread": 0.499795
+        "evidence_volume": 0.730854,
+        "external_support_ratio": 1,
+        "temporal_spread": 0.499795,
+        "consensus_alignment": 1,
+        "source_tier": 1,
+        "rhetorical_red_flags": 1,
+        "citation_chain_closure": 1,
+        "claim_falsifiability": 1
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "Independent labs replicated the result in 2024.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.894605,
+          "verdict": "trustworthy",
+          "linear_score": 0.900257,
+          "geometric_core": 0.884107,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.762479,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": 0.59959,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 1,
+            "root_depth": 1,
+            "source_independence": 0.666667,
+            "evidence_volume": 0.762479,
+            "external_support_ratio": 1,
+            "temporal_spread": 0.59959,
+            "consensus_alignment": 1,
+            "source_tier": 1,
+            "rhetorical_red_flags": 1,
+            "citation_chain_closure": 1,
+            "claim_falsifiability": 1
+          },
+          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: temporal_spread, source_independence.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.894605.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 176.92,88.28 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.894605</text>\n</svg>"
+        },
+        {
+          "id": "c1",
+          "text": "The report cites two peer-reviewed studies.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.803246,
+          "verdict": "trustworthy",
+          "linear_score": 0.818262,
+          "geometric_core": 0.775358,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.632121,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": 0.4,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 1,
+            "root_depth": 1,
+            "source_independence": 0.666667,
+            "evidence_volume": 0.632121,
+            "external_support_ratio": 1,
+            "temporal_spread": 0.4,
+            "consensus_alignment": 1,
+            "source_tier": 1,
+            "rhetorical_red_flags": 1,
+            "citation_chain_closure": 0.666667,
+            "claim_falsifiability": 1
+          },
+          "rationale": "Trustworthy signal: strong rhetorical_red_flags, claim_falsifiability. Minor weakness: temporal_spread, evidence_volume.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.803246.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.803246</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.95,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 2
-      },
-      "overall_score": 0.889971,
-      "verdict": "trustworthy",
-      "weight_profile_used": "factual"
+        "tavily_calls_made": 2,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.95
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.923209.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 176.92,88.28 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.923209</text>\n</svg>",
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.848401.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.848401</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.894605.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 176.92,88.28 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.894605</text>\n</svg>",
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.803246.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 190.43,55.11 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"49.33\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"93.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"137.87\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"182.13\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"226.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"270.67\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"49.33\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"93.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"137.87\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"182.13\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"226.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"270.67\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.803246</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -208,80 +358,274 @@ export const FIXTURES = [
     "content_type": "factual",
     "description": "Factual label but weak citations, heavy rhetoric, and closed chains.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.13739,
+      "verdict": "unreliable",
+      "linear_score": 0.244502,
+      "geometric_core": 0.090852,
+      "penalty_total": 0.053334,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.0,
-            "claim_falsifiability": 0.0,
-            "claim_specificity": 0.333333,
-            "consensus_alignment": 0.0,
-            "external_support_ratio": 0.333333,
-            "rhetorical_red_flags": 0.0,
-            "root_depth": 0.0,
-            "source_independence": 0.4,
-            "source_tier": 0.1,
-            "temporal_spread": null
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.075141.</title>\n  <desc>High in source_independence, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.075141</text>\n</svg>",
-          "rationale": "Unreliable signal: weak root_depth, consensus_alignment; limited support from source_independence, temporal_spread.",
-          "score": 0.075141,
-          "text": "A hidden network controls everything.",
-          "verdict": "unreliable"
+          "id": "requires_independent_sources",
+          "passed": true,
+          "value": 0.4,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
         },
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.333333,
-            "claim_falsifiability": 0.6,
-            "claim_specificity": 0.333333,
-            "consensus_alignment": 0.0,
-            "external_support_ratio": 0.333333,
-            "rhetorical_red_flags": 0.0,
-            "root_depth": 0.333333,
-            "source_independence": 0.4,
-            "source_tier": 0.1,
-            "temporal_spread": null
-          },
-          "id": "c1",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict unreliable, score 0.324859.</title>\n  <desc>High in temporal_spread, claim_falsifiability; low in consensus_alignment, rhetorical_red_flags.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 169.40,52.06 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 144.78,60.06 143.07,41.70\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.324859</text>\n</svg>",
-          "rationale": "Unreliable signal: weak consensus_alignment, rhetorical_red_flags; limited support from temporal_spread, claim_falsifiability.",
-          "score": 0.324859,
-          "text": "Officials refuse to reveal the truth.",
-          "verdict": "unreliable"
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.497168,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": false,
+          "value": 0.166666,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": null,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 0.333333,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 0.333333,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
+        }
+      ],
+      "penalties": [
+        {
+          "id": "rootless_claim",
+          "severity": 0.333336,
+          "weight": 0.16,
+          "impact": 0.053334,
+          "reason": "Support does not reach a primary, reviewed, or well-rooted source."
+        }
+      ],
+      "actions": [
+        {
+          "id": "seek_primary_root",
+          "priority": "medium",
+          "reason": "Trace support back to a reviewed or primary root."
+        },
+        {
+          "id": "defer_promotion",
+          "priority": "high",
+          "reason": "Do not promote this claim until failed ACC checks are resolved."
         }
       ],
       "content_type": "factual",
+      "weight_profile_used": "factual",
       "features": {
-        "citation_chain_closure": 0.0,
-        "claim_falsifiability": 0.3,
         "claim_specificity": 0.333333,
-        "consensus_alignment": 0.0,
-        "external_support_ratio": 0.333333,
-        "rhetorical_red_flags": 0.0,
         "root_depth": 0.166666,
         "source_independence": 0.4,
+        "evidence_volume": 0.497168,
+        "external_support_ratio": 0.333333,
+        "temporal_spread": null,
+        "consensus_alignment": 0,
         "source_tier": 0.1,
-        "temporal_spread": null
+        "rhetorical_red_flags": 0,
+        "citation_chain_closure": 0,
+        "claim_falsifiability": 0.3
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "A hidden network controls everything.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0,
+          "verdict": "unreliable",
+          "linear_score": 0.13726,
+          "geometric_core": 0.012625,
+          "penalty_total": 0.16,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.464739,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": false,
+              "value": 0,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": null,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 0.333333,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [
+            {
+              "id": "rootless_claim",
+              "severity": 1,
+              "weight": 0.16,
+              "impact": 0.16,
+              "reason": "Support does not reach a primary, reviewed, or well-rooted source."
+            }
+          ],
+          "actions": [
+            {
+              "id": "seek_primary_root",
+              "priority": "high",
+              "reason": "Trace support back to a reviewed or primary root."
+            },
+            {
+              "id": "defer_promotion",
+              "priority": "high",
+              "reason": "Do not promote this claim until failed ACC checks are resolved."
+            }
+          ],
+          "feature_breakdown": {
+            "claim_specificity": 0.333333,
+            "root_depth": 0,
+            "source_independence": 0.4,
+            "evidence_volume": 0.464739,
+            "external_support_ratio": 0.333333,
+            "temporal_spread": null,
+            "consensus_alignment": 0,
+            "source_tier": 0.1,
+            "rhetorical_red_flags": 0,
+            "citation_chain_closure": 0,
+            "claim_falsifiability": 0
+          },
+          "rationale": "Unreliable signal: weak root_depth, consensus_alignment; limited support from evidence_volume, temporal_spread.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.000000.</title>\n  <desc>High in source_independence, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.000000</text>\n</svg>"
+        },
+        {
+          "id": "c1",
+          "text": "Officials refuse to reveal the truth.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.307475,
+          "verdict": "unreliable",
+          "linear_score": 0.351017,
+          "geometric_core": 0.226612,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.464739,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 0.333333,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": null,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 0.333333,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [
+            {
+              "id": "defer_promotion",
+              "priority": "high",
+              "reason": "Do not promote this claim until failed ACC checks are resolved."
+            }
+          ],
+          "feature_breakdown": {
+            "claim_specificity": 0.333333,
+            "root_depth": 0.333333,
+            "source_independence": 0.4,
+            "evidence_volume": 0.464739,
+            "external_support_ratio": 0.333333,
+            "temporal_spread": null,
+            "consensus_alignment": 0,
+            "source_tier": 0.1,
+            "rhetorical_red_flags": 0,
+            "citation_chain_closure": 0.333333,
+            "claim_falsifiability": 0.6
+          },
+          "rationale": "Unreliable signal: weak consensus_alignment, rhetorical_red_flags; limited support from temporal_spread, claim_falsifiability.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict unreliable, score 0.307475.</title>\n  <desc>High in temporal_spread, claim_falsifiability; low in consensus_alignment, rhetorical_red_flags.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 169.40,52.06 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 144.78,60.06 143.07,41.70\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.307475</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.9,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 2
-      },
-      "overall_score": 0.208528,
-      "verdict": "unreliable",
-      "weight_profile_used": "factual"
+        "tavily_calls_made": 2,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.9
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.075141.</title>\n  <desc>High in source_independence, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.075141</text>\n</svg>",
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict unreliable, score 0.324859.</title>\n  <desc>High in temporal_spread, claim_falsifiability; low in consensus_alignment, rhetorical_red_flags.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 169.40,52.06 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 144.78,60.06 143.07,41.70\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.324859</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.000000.</title>\n  <desc>High in source_independence, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.000000</text>\n</svg>",
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict unreliable, score 0.307475.</title>\n  <desc>High in temporal_spread, claim_falsifiability; low in consensus_alignment, rhetorical_red_flags.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 169.40,52.06 178.26,59.07 175.22,69.94 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 144.78,60.06 143.07,41.70\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.307475</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -386,57 +730,169 @@ export const FIXTURES = [
     "content_type": "opinion",
     "description": "Opinion with moderate support and some rhetorical framing.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.53867,
+      "verdict": "mixed",
+      "linear_score": 0.55349,
+      "geometric_core": 0.511147,
+      "penalty_total": 0,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.666667,
-            "claim_falsifiability": 0.6,
-            "claim_specificity": 0.666667,
-            "consensus_alignment": null,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 0.5,
-            "root_depth": 0.333333,
-            "source_independence": 0.5,
-            "source_tier": 0.85,
-            "temporal_spread": 0.183692
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.546530.</title>\n  <desc>High in source_tier, external_support_ratio; low in temporal_spread, root_depth.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 169.40,52.06 182.83,57.58 205.65,79.83 165.18,72.13 160.00,89.00 136.02,98.01 137.17,72.42 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.546530</text>\n</svg>",
-          "rationale": "Mixed signal: strengths in source_tier, external_support_ratio, weaknesses in temporal_spread, root_depth.",
-          "score": 0.54653,
-          "text": "Policy should prioritize long-term adaptation.",
-          "verdict": "mixed"
+          "id": "requires_independent_sources",
+          "passed": true,
+          "value": 0.5,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
+        },
+        {
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.464739,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": true,
+          "value": 0.333333,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": 0.183692,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 0.666667,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
+        }
+      ],
+      "penalties": [],
+      "actions": [
+        {
+          "id": "defer_promotion",
+          "priority": "high",
+          "reason": "Do not promote this claim until failed ACC checks are resolved."
         }
       ],
       "content_type": "opinion",
+      "weight_profile_used": "opinion",
       "features": {
-        "citation_chain_closure": 0.666667,
-        "claim_falsifiability": 0.6,
         "claim_specificity": 0.666667,
-        "consensus_alignment": null,
-        "external_support_ratio": 1.0,
-        "rhetorical_red_flags": 0.5,
         "root_depth": 0.333333,
         "source_independence": 0.5,
+        "evidence_volume": 0.464739,
+        "external_support_ratio": 1,
+        "temporal_spread": 0.183692,
+        "consensus_alignment": null,
         "source_tier": 0.85,
-        "temporal_spread": 0.183692
+        "rhetorical_red_flags": 0.5,
+        "citation_chain_closure": 0.666667,
+        "claim_falsifiability": 0.6
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "Policy should prioritize long-term adaptation.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.544818,
+          "verdict": "mixed",
+          "linear_score": 0.562478,
+          "geometric_core": 0.51202,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.675348,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 0.333333,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": 0.183692,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 0.666667,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [
+            {
+              "id": "defer_promotion",
+              "priority": "high",
+              "reason": "Do not promote this claim until failed ACC checks are resolved."
+            }
+          ],
+          "feature_breakdown": {
+            "claim_specificity": 0.666667,
+            "root_depth": 0.333333,
+            "source_independence": 0.5,
+            "evidence_volume": 0.675348,
+            "external_support_ratio": 1,
+            "temporal_spread": 0.183692,
+            "consensus_alignment": null,
+            "source_tier": 0.85,
+            "rhetorical_red_flags": 0.5,
+            "citation_chain_closure": 0.666667,
+            "claim_falsifiability": 0.6
+          },
+          "rationale": "Mixed signal: strengths in source_tier, external_support_ratio, weaknesses in temporal_spread, root_depth.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.544818.</title>\n  <desc>High in source_tier, external_support_ratio; low in temporal_spread, root_depth.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 169.40,52.06 182.83,57.58 205.65,79.83 165.18,72.13 160.00,89.00 136.02,98.01 137.17,72.42 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.544818</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.88,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 1
-      },
-      "overall_score": 0.563236,
-      "verdict": "mixed",
-      "weight_profile_used": "opinion"
+        "tavily_calls_made": 1,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.88
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.546530.</title>\n  <desc>High in source_tier, external_support_ratio; low in temporal_spread, root_depth.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 169.40,52.06 182.83,57.58 205.65,79.83 165.18,72.13 160.00,89.00 136.02,98.01 137.17,72.42 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.546530</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.544818.</title>\n  <desc>High in source_tier, external_support_ratio; low in temporal_spread, root_depth.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 169.40,52.06 182.83,57.58 205.65,79.83 165.18,72.13 160.00,89.00 136.02,98.01 137.17,72.42 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.544818</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -517,80 +973,230 @@ export const FIXTURES = [
     "content_type": "factual",
     "description": "High-integrity scientific excerpt with primary citations.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.860435,
+      "verdict": "trustworthy",
+      "linear_score": 0.872187,
+      "geometric_core": 0.838609,
+      "penalty_total": 0,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 1.0,
-            "claim_falsifiability": 1.0,
-            "claim_specificity": 1.0,
-            "consensus_alignment": 1.0,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 1.0,
-            "root_depth": 1.0,
-            "source_independence": 0.75,
-            "source_tier": 1.0,
-            "temporal_spread": 0.4
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.884931.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.884931</text>\n</svg>",
-          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: temporal_spread, source_independence.",
-          "score": 0.884931,
-          "text": "A randomized trial measured outcomes across 12 months.",
-          "verdict": "trustworthy"
+          "id": "requires_independent_sources",
+          "passed": true,
+          "value": 0.75,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
         },
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 1.0,
-            "claim_falsifiability": 1.0,
-            "claim_specificity": 1.0,
-            "consensus_alignment": 1.0,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 1.0,
-            "root_depth": 1.0,
-            "source_independence": 0.75,
-            "source_tier": 1.0,
-            "temporal_spread": 0.4
-          },
-          "id": "c1",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.884931.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.884931</text>\n</svg>",
-          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: temporal_spread, source_independence.",
-          "score": 0.884931,
-          "text": "The confidence interval excludes zero.",
-          "verdict": "trustworthy"
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.77687,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": 0.4,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
         }
       ],
+      "penalties": [],
+      "actions": [],
       "content_type": "factual",
+      "weight_profile_used": "factual",
       "features": {
-        "citation_chain_closure": 1.0,
-        "claim_falsifiability": 1.0,
-        "claim_specificity": 1.0,
-        "consensus_alignment": 1.0,
-        "external_support_ratio": 1.0,
-        "rhetorical_red_flags": 1.0,
-        "root_depth": 1.0,
+        "claim_specificity": 1,
+        "root_depth": 1,
         "source_independence": 0.75,
-        "source_tier": 1.0,
-        "temporal_spread": 0.4
+        "evidence_volume": 0.77687,
+        "external_support_ratio": 1,
+        "temporal_spread": 0.4,
+        "consensus_alignment": 1,
+        "source_tier": 1,
+        "rhetorical_red_flags": 1,
+        "citation_chain_closure": 1,
+        "claim_falsifiability": 1
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "A randomized trial measured outcomes across 12 months.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.845012,
+          "verdict": "trustworthy",
+          "linear_score": 0.859671,
+          "geometric_core": 0.817788,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.713495,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": 0.4,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 1,
+            "root_depth": 1,
+            "source_independence": 0.75,
+            "evidence_volume": 0.713495,
+            "external_support_ratio": 1,
+            "temporal_spread": 0.4,
+            "consensus_alignment": 1,
+            "source_tier": 1,
+            "rhetorical_red_flags": 1,
+            "citation_chain_closure": 1,
+            "claim_falsifiability": 1
+          },
+          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: temporal_spread, evidence_volume.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.845012.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.845012</text>\n</svg>"
+        },
+        {
+          "id": "c1",
+          "text": "The confidence interval excludes zero.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.845012,
+          "verdict": "trustworthy",
+          "linear_score": 0.859671,
+          "geometric_core": 0.817788,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.713495,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": 0.4,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 1,
+            "root_depth": 1,
+            "source_independence": 0.75,
+            "evidence_volume": 0.713495,
+            "external_support_ratio": 1,
+            "temporal_spread": 0.4,
+            "consensus_alignment": 1,
+            "source_tier": 1,
+            "rhetorical_red_flags": 1,
+            "citation_chain_closure": 1,
+            "claim_falsifiability": 1
+          },
+          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: temporal_spread, evidence_volume.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.845012.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.845012</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.97,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 2
-      },
-      "overall_score": 0.886,
-      "verdict": "trustworthy",
-      "weight_profile_used": "factual"
+        "tavily_calls_made": 2,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.97
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.884931.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.884931</text>\n</svg>",
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.884931.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.884931</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.845012.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.845012</text>\n</svg>",
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c1: verdict trustworthy, score 0.845012.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 188.21,26.17 194.24,53.88 205.65,79.83 171.29,80.53 160.00,113.00 131.79,103.83 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"40.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"80.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"120.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"200.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"240.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"280.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"40.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"80.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"120.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"200.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"240.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"280.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.845012</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -721,57 +1327,176 @@ export const FIXTURES = [
     "content_type": "reference",
     "description": "Reference documentation with high falsifiability and low rhetoric.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.541903,
+      "verdict": "mixed",
+      "linear_score": 0.832639,
+      "geometric_core": 0.573394,
+      "penalty_total": 0.2,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.666667,
-            "claim_falsifiability": 1.0,
-            "claim_specificity": 1.0,
-            "consensus_alignment": null,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 1.0,
-            "root_depth": 0.666667,
-            "source_independence": 0.0,
-            "source_tier": 0.7,
-            "temporal_spread": null
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.914444.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in source_independence, temporal_spread.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 178.81,39.11 160.00,65.00 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"148.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"148.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.914444</text>\n</svg>",
-          "rationale": "Trustworthy signal: strong rhetorical_red_flags, claim_falsifiability. Minor weakness: source_independence, temporal_spread.",
-          "score": 0.914444,
-          "text": "Set timeout_ms to 5000 for a 5-second deadline.",
-          "verdict": "trustworthy"
+          "id": "requires_independent_sources",
+          "passed": false,
+          "value": 0,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
+        },
+        {
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.430217,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": true,
+          "value": 0.666667,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": null,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
+        }
+      ],
+      "penalties": [
+        {
+          "id": "single_source_collapse",
+          "severity": 1,
+          "weight": 0.2,
+          "impact": 0.2,
+          "reason": "Supporting evidence collapses into too little source independence."
+        }
+      ],
+      "actions": [
+        {
+          "id": "request_independent_source",
+          "priority": "high",
+          "reason": "Add an independent source branch before promotion."
+        },
+        {
+          "id": "defer_promotion",
+          "priority": "high",
+          "reason": "Do not promote this claim until failed ACC checks are resolved."
         }
       ],
       "content_type": "reference",
+      "weight_profile_used": "reference",
       "features": {
-        "citation_chain_closure": 0.666667,
-        "claim_falsifiability": 1.0,
-        "claim_specificity": 1.0,
-        "consensus_alignment": null,
-        "external_support_ratio": 1.0,
-        "rhetorical_red_flags": 1.0,
+        "claim_specificity": 1,
         "root_depth": 0.666667,
-        "source_independence": 0.0,
+        "source_independence": 0,
+        "evidence_volume": 0.430217,
+        "external_support_ratio": 1,
+        "temporal_spread": null,
+        "consensus_alignment": null,
         "source_tier": 0.7,
-        "temporal_spread": null
+        "rhetorical_red_flags": 1,
+        "citation_chain_closure": 0.666667,
+        "claim_falsifiability": 1
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "Set timeout_ms to 5000 for a 5-second deadline.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.85514,
+          "verdict": "trustworthy",
+          "linear_score": 0.86489,
+          "geometric_core": 0.837034,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.464739,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 0.666667,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": null,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 1,
+            "root_depth": 0.666667,
+            "source_independence": 0,
+            "evidence_volume": 0.464739,
+            "external_support_ratio": 1,
+            "temporal_spread": null,
+            "consensus_alignment": null,
+            "source_tier": 0.7,
+            "rhetorical_red_flags": 1,
+            "citation_chain_closure": 0.666667,
+            "claim_falsifiability": 1
+          },
+          "rationale": "Trustworthy signal: strong rhetorical_red_flags, claim_falsifiability. Minor weakness: source_independence, evidence_volume.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.855140.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in source_independence, temporal_spread.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 178.81,39.11 160.00,65.00 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"148.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"148.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.855140</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.93,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 0
-      },
-      "overall_score": 0.864227,
-      "verdict": "trustworthy",
-      "weight_profile_used": "reference"
+        "tavily_calls_made": 0,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.93
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.914444.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in source_independence, temporal_spread.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 178.81,39.11 160.00,65.00 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"148.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"148.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.914444</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.855140.</title>\n  <desc>High in rhetorical_red_flags, claim_falsifiability; low in source_independence, temporal_spread.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 178.81,39.11 160.00,65.00 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 129.57,55.11 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"148.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.00\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"148.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.00\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.855140</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -832,20 +1557,20 @@ export const FIXTURES = [
     "content_type": "fiction",
     "description": "Fiction fragment should bypass feature scoring.",
     "expected_score_result": {
-      "claims": [],
-      "content_type": "fiction",
-      "features": null,
-      "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.95,
-        "elapsed_ms": 0,
-        "model_version": "unknown",
-        "runtime": "python",
-        "tavily_calls_made": 0
-      },
       "overall_score": null,
       "verdict": "fiction",
-      "weight_profile_used": null
+      "content_type": "fiction",
+      "weight_profile_used": null,
+      "features": null,
+      "claims": [],
+      "meta": {
+        "algorithm_version": "2.0.0",
+        "model_version": "unknown",
+        "runtime": "python",
+        "tavily_calls_made": 0,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.95
+      }
     },
     "expected_svg": [],
     "extraction": {
@@ -871,57 +1596,157 @@ export const FIXTURES = [
     "content_type": "factual",
     "description": "No Tavily results available to force temporal redistribution.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.7423,
+      "verdict": "trustworthy",
+      "linear_score": 0.760356,
+      "geometric_core": 0.708766,
+      "penalty_total": 0,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 1.0,
-            "claim_falsifiability": 1.0,
-            "claim_specificity": 1.0,
-            "consensus_alignment": null,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 1.0,
-            "root_depth": 0.333333,
-            "source_independence": 0.5,
-            "source_tier": 0.7,
-            "temporal_spread": null
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.803087.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in root_depth, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 169.40,52.06 182.83,57.58 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.803087</text>\n</svg>",
-          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: root_depth, source_independence.",
-          "score": 0.803087,
-          "text": "The dataset includes 120 verified entries.",
-          "verdict": "trustworthy"
+          "id": "requires_independent_sources",
+          "passed": true,
+          "value": 0.5,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
+        },
+        {
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.527633,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": true,
+          "value": 0.333333,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": null,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
         }
       ],
+      "penalties": [],
+      "actions": [],
       "content_type": "factual",
+      "weight_profile_used": "factual",
       "features": {
-        "citation_chain_closure": 1.0,
-        "claim_falsifiability": 1.0,
-        "claim_specificity": 1.0,
-        "consensus_alignment": null,
-        "external_support_ratio": 1.0,
-        "rhetorical_red_flags": 1.0,
+        "claim_specificity": 1,
         "root_depth": 0.333333,
         "source_independence": 0.5,
+        "evidence_volume": 0.527633,
+        "external_support_ratio": 1,
+        "temporal_spread": null,
+        "consensus_alignment": null,
         "source_tier": 0.7,
-        "temporal_spread": null
+        "rhetorical_red_flags": 1,
+        "citation_chain_closure": 1,
+        "claim_falsifiability": 1
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "The dataset includes 120 verified entries.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.747178,
+          "verdict": "trustworthy",
+          "linear_score": 0.765504,
+          "geometric_core": 0.713145,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.583138,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 0.333333,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": null,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 1,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 1,
+            "root_depth": 0.333333,
+            "source_independence": 0.5,
+            "evidence_volume": 0.583138,
+            "external_support_ratio": 1,
+            "temporal_spread": null,
+            "consensus_alignment": null,
+            "source_tier": 0.7,
+            "rhetorical_red_flags": 1,
+            "citation_chain_closure": 1,
+            "claim_falsifiability": 1
+          },
+          "rationale": "Trustworthy signal: strong citation_chain_closure, claim_falsifiability. Minor weakness: root_depth, source_independence.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.747178.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in root_depth, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 169.40,52.06 182.83,57.58 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.747178</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.84,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 0
-      },
-      "overall_score": 0.794649,
-      "verdict": "trustworthy",
-      "weight_profile_used": "factual"
+        "tavily_calls_made": 0,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.84
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.803087.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in root_depth, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 169.40,52.06 182.83,57.58 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.803087</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict trustworthy, score 0.747178.</title>\n  <desc>High in citation_chain_closure, claim_falsifiability; low in root_depth, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,17.00 169.40,52.06 182.83,57.58 205.65,79.83 174.11,84.42 160.00,89.00 140.25,92.18 114.35,79.83 114.35,50.17 131.79,26.17\" stroke=\"#4A8A96\" fill=\"#4A8A96\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"87.00\" x2=\"162.00\" y2=\"91.00\" />\n  <line class=\"null-mark\" x1=\"158.00\" y1=\"91.00\" x2=\"162.00\" y2=\"87.00\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#4A8A96\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.747178</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -990,57 +1815,157 @@ export const FIXTURES = [
     "content_type": "factual",
     "description": "Near trustworthy boundary to test threshold behavior.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0.62512,
+      "verdict": "mixed",
+      "linear_score": 0.63874,
+      "geometric_core": 0.599825,
+      "penalty_total": 0,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.666667,
-            "claim_falsifiability": 0.6,
-            "claim_specificity": 0.666667,
-            "consensus_alignment": 1.0,
-            "external_support_ratio": 1.0,
-            "rhetorical_red_flags": 0.833333,
-            "root_depth": 0.666667,
-            "source_independence": 0.5,
-            "source_tier": 0.85,
-            "temporal_spread": 0.266484
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.627591.</title>\n  <desc>High in external_support_ratio, consensus_alignment; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 178.81,39.11 182.83,57.58 205.65,79.83 167.52,75.35 160.00,113.00 136.02,98.01 121.96,77.36 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.627591</text>\n</svg>",
-          "rationale": "Mixed signal: strengths in external_support_ratio, consensus_alignment, weaknesses in temporal_spread, source_independence.",
-          "score": 0.627591,
-          "text": "A municipal report estimates a 14% change.",
-          "verdict": "mixed"
+          "id": "requires_independent_sources",
+          "passed": true,
+          "value": 0.5,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
+        },
+        {
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.527633,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": true,
+          "value": 0.666667,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": 0.266484,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 1,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 0.666667,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
         }
       ],
+      "penalties": [],
+      "actions": [],
       "content_type": "factual",
+      "weight_profile_used": "factual",
       "features": {
-        "citation_chain_closure": 0.666667,
-        "claim_falsifiability": 0.6,
         "claim_specificity": 0.666667,
-        "consensus_alignment": 1.0,
-        "external_support_ratio": 1.0,
-        "rhetorical_red_flags": 0.833333,
         "root_depth": 0.666667,
         "source_independence": 0.5,
+        "evidence_volume": 0.527633,
+        "external_support_ratio": 1,
+        "temporal_spread": 0.266484,
+        "consensus_alignment": 1,
         "source_tier": 0.85,
-        "temporal_spread": 0.266484
+        "rhetorical_red_flags": 0.833333,
+        "citation_chain_closure": 0.666667,
+        "claim_falsifiability": 0.6
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "A municipal report estimates a 14% change.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0.616229,
+          "verdict": "mixed",
+          "linear_score": 0.62962,
+          "geometric_core": 0.591361,
+          "penalty_total": 0,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.675348,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": true,
+              "value": 0.666667,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": 0.266484,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 0.666667,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [],
+          "actions": [],
+          "feature_breakdown": {
+            "claim_specificity": 0.666667,
+            "root_depth": 0.666667,
+            "source_independence": 0.5,
+            "evidence_volume": 0.675348,
+            "external_support_ratio": 1,
+            "temporal_spread": 0.266484,
+            "consensus_alignment": 1,
+            "source_tier": 0.85,
+            "rhetorical_red_flags": 0.833333,
+            "citation_chain_closure": 0.666667,
+            "claim_falsifiability": 0.6
+          },
+          "rationale": "Mixed signal: strengths in external_support_ratio, consensus_alignment, weaknesses in temporal_spread, source_independence.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.616229.</title>\n  <desc>High in external_support_ratio, consensus_alignment; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 178.81,39.11 182.83,57.58 205.65,79.83 167.52,75.35 160.00,113.00 136.02,98.01 121.96,77.36 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.616229</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.86,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 1
-      },
-      "overall_score": 0.656474,
-      "verdict": "mixed",
-      "weight_profile_used": "factual"
+        "tavily_calls_made": 1,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.86
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.627591.</title>\n  <desc>High in external_support_ratio, consensus_alignment; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 178.81,39.11 182.83,57.58 205.65,79.83 167.52,75.35 160.00,113.00 136.02,98.01 121.96,77.36 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.627591</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict mixed, score 0.616229.</title>\n  <desc>High in external_support_ratio, consensus_alignment; low in temporal_spread, source_independence.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,33.00 178.81,39.11 182.83,57.58 205.65,79.83 167.52,75.35 160.00,113.00 136.02,98.01 121.96,77.36 129.57,55.11 143.07,41.70\" stroke=\"#C49A4A\" fill=\"#C49A4A\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"96.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"121.60\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"147.20\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"172.80\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"198.40\" y2=\"156.00\" stroke=\"#4A8A96\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"224.00\" y2=\"150.00\" stroke=\"#4A8A96\" />\n  <circle class=\"source-node\" cx=\"96.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"121.60\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"147.20\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"172.80\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"198.40\" cy=\"156.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"0.70\" />\n  <circle class=\"source-node\" cx=\"224.00\" cy=\"150.00\" r=\"4.00\" fill=\"#4A8A96\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C49A4A\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.616229</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -1121,57 +2046,207 @@ export const FIXTURES = [
     "content_type": "factual",
     "description": "Near mixed boundary to test low-score threshold behavior.",
     "expected_score_result": {
-      "claims": [
+      "overall_score": 0,
+      "verdict": "unreliable",
+      "linear_score": 0.17358,
+      "geometric_core": 0.021149,
+      "penalty_total": 0.169524,
+      "rules": [
         {
-          "char_end": 64,
-          "char_start": 0,
-          "feature_breakdown": {
-            "citation_chain_closure": 0.0,
-            "claim_falsifiability": 0.0,
-            "claim_specificity": 0.333333,
-            "consensus_alignment": 0.0,
-            "external_support_ratio": 0.5,
-            "rhetorical_red_flags": 0.0,
-            "root_depth": 0.0,
-            "source_independence": 0.333333,
-            "source_tier": 0.1,
-            "temporal_spread": null
-          },
-          "id": "c0",
-          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.075141.</title>\n  <desc>High in external_support_ratio, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 175.22,60.06 182.83,72.42 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.075141</text>\n</svg>",
-          "rationale": "Unreliable signal: weak root_depth, consensus_alignment; limited support from external_support_ratio, temporal_spread.",
-          "score": 0.075141,
-          "text": "Unnamed insiders claim secret evidence exists.",
-          "verdict": "unreliable"
+          "id": "requires_independent_sources",
+          "passed": false,
+          "value": 0.333333,
+          "threshold": 0.35,
+          "reason": "Claim has independent source support."
+        },
+        {
+          "id": "requires_evidence_volume",
+          "passed": true,
+          "value": 0.393469,
+          "threshold": 0.3,
+          "reason": "Claim has enough direct support volume to evaluate."
+        },
+        {
+          "id": "requires_rooted_support",
+          "passed": false,
+          "value": 0,
+          "threshold": 0.25,
+          "reason": "Support reaches a primary, reviewed, or well-rooted source."
+        },
+        {
+          "id": "requires_temporal_spread",
+          "passed": true,
+          "value": null,
+          "threshold": 0.15,
+          "reason": "Evidence does not collapse into a single time window."
+        },
+        {
+          "id": "requires_support_over_contradiction",
+          "passed": true,
+          "value": 0.5,
+          "threshold": 0.2,
+          "reason": "External support is sufficient for the claim type."
+        },
+        {
+          "id": "requires_specific_claim",
+          "passed": true,
+          "value": 0.333333,
+          "threshold": 0.25,
+          "reason": "Claim text has enough concrete anchors to test."
+        }
+      ],
+      "penalties": [
+        {
+          "id": "single_source_collapse",
+          "severity": 0.04762,
+          "weight": 0.2,
+          "impact": 0.009524,
+          "reason": "Supporting evidence collapses into too little source independence."
+        },
+        {
+          "id": "rootless_claim",
+          "severity": 1,
+          "weight": 0.16,
+          "impact": 0.16,
+          "reason": "Support does not reach a primary, reviewed, or well-rooted source."
+        }
+      ],
+      "actions": [
+        {
+          "id": "seek_primary_root",
+          "priority": "high",
+          "reason": "Trace support back to a reviewed or primary root."
+        },
+        {
+          "id": "request_independent_source",
+          "priority": "medium",
+          "reason": "Add an independent source branch before promotion."
+        },
+        {
+          "id": "defer_promotion",
+          "priority": "high",
+          "reason": "Do not promote this claim until failed ACC checks are resolved."
         }
       ],
       "content_type": "factual",
+      "weight_profile_used": "factual",
       "features": {
-        "citation_chain_closure": 0.0,
-        "claim_falsifiability": 0.0,
         "claim_specificity": 0.333333,
-        "consensus_alignment": 0.0,
-        "external_support_ratio": 0.5,
-        "rhetorical_red_flags": 0.0,
-        "root_depth": 0.0,
+        "root_depth": 0,
         "source_independence": 0.333333,
+        "evidence_volume": 0.393469,
+        "external_support_ratio": 0.5,
+        "temporal_spread": null,
+        "consensus_alignment": 0,
         "source_tier": 0.1,
-        "temporal_spread": null
+        "rhetorical_red_flags": 0,
+        "citation_chain_closure": 0,
+        "claim_falsifiability": 0
       },
+      "claims": [
+        {
+          "id": "c0",
+          "text": "Unnamed insiders claim secret evidence exists.",
+          "char_start": 0,
+          "char_end": 64,
+          "score": 0,
+          "verdict": "unreliable",
+          "linear_score": 0.13726,
+          "geometric_core": 0.012625,
+          "penalty_total": 0.16,
+          "rules": [
+            {
+              "id": "requires_independent_sources",
+              "passed": true,
+              "value": null,
+              "threshold": 0.35,
+              "reason": "Claim has independent source support."
+            },
+            {
+              "id": "requires_evidence_volume",
+              "passed": true,
+              "value": 0.464739,
+              "threshold": 0.3,
+              "reason": "Claim has enough direct support volume to evaluate."
+            },
+            {
+              "id": "requires_rooted_support",
+              "passed": false,
+              "value": 0,
+              "threshold": 0.25,
+              "reason": "Support reaches a primary, reviewed, or well-rooted source."
+            },
+            {
+              "id": "requires_temporal_spread",
+              "passed": true,
+              "value": null,
+              "threshold": 0.15,
+              "reason": "Evidence does not collapse into a single time window."
+            },
+            {
+              "id": "requires_support_over_contradiction",
+              "passed": true,
+              "value": null,
+              "threshold": 0.2,
+              "reason": "External support is sufficient for the claim type."
+            },
+            {
+              "id": "requires_specific_claim",
+              "passed": true,
+              "value": 0.333333,
+              "threshold": 0.25,
+              "reason": "Claim text has enough concrete anchors to test."
+            }
+          ],
+          "penalties": [
+            {
+              "id": "rootless_claim",
+              "severity": 1,
+              "weight": 0.16,
+              "impact": 0.16,
+              "reason": "Support does not reach a primary, reviewed, or well-rooted source."
+            }
+          ],
+          "actions": [
+            {
+              "id": "seek_primary_root",
+              "priority": "high",
+              "reason": "Trace support back to a reviewed or primary root."
+            },
+            {
+              "id": "defer_promotion",
+              "priority": "high",
+              "reason": "Do not promote this claim until failed ACC checks are resolved."
+            }
+          ],
+          "feature_breakdown": {
+            "claim_specificity": 0.333333,
+            "root_depth": 0,
+            "source_independence": 0.333333,
+            "evidence_volume": 0.464739,
+            "external_support_ratio": 0.5,
+            "temporal_spread": null,
+            "consensus_alignment": 0,
+            "source_tier": 0.1,
+            "rhetorical_red_flags": 0,
+            "citation_chain_closure": 0,
+            "claim_falsifiability": 0
+          },
+          "rationale": "Unreliable signal: weak root_depth, consensus_alignment; limited support from external_support_ratio, temporal_spread.",
+          "mini_graph_svg": "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.000000.</title>\n  <desc>High in external_support_ratio, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 175.22,60.06 182.83,72.42 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.000000</text>\n</svg>"
+        }
+      ],
       "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.89,
-        "elapsed_ms": 0,
+        "algorithm_version": "2.0.0",
         "model_version": "unknown",
         "runtime": "python",
-        "tavily_calls_made": 1
-      },
-      "overall_score": 0.144574,
-      "verdict": "unreliable",
-      "weight_profile_used": "factual"
+        "tavily_calls_made": 1,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.89
+      }
     },
     "expected_svg": [
-      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.075141.</title>\n  <desc>High in external_support_ratio, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 175.22,60.06 182.83,72.42 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.075141</text>\n</svg>"
+      "<svg viewBox=\"0 0 320 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <title>Mini-graph for claim c0: verdict unreliable, score 0.000000.</title>\n  <desc>High in external_support_ratio, temporal_spread; low in root_depth, consensus_alignment.</desc>\n  <rect class=\"bg\" x=\"0\" y=\"0\" width=\"320\" height=\"240\" />\n  <style>\n    .bg{fill:#F4F3F0;}\n    .grid{fill:none;stroke:#7B8EA0;stroke-width:1;opacity:0.2;}\n    .axis{stroke:#7B8EA0;stroke-width:1;opacity:0.4;}\n    .axis-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:8px;text-anchor:middle;dominant-baseline:middle;}\n    .reference-poly{fill:none;stroke:#C49A4A;stroke-width:1.5;stroke-dasharray:3 2;opacity:0.6;}\n    .claim-poly{stroke-width:2;fill-opacity:0.25;}\n    .null-mark{fill:none;stroke:#7B8EA0;stroke-width:1;stroke-dasharray:2 2;}\n    .divider{stroke:#7B8EA0;stroke-width:1;opacity:0.35;}\n    .edge{fill:none;stroke-width:1;opacity:0.5;}\n    .source-node{stroke:#1A1A1A;stroke-width:0.5;}\n    .claim-node{stroke:#1A1A1A;stroke-width:1;}\n    .score-label{fill:#1A1A1A;font-family:ui-sans-serif,system-ui,sans-serif;font-size:9px;text-anchor:middle;}\n  </style>\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"12.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"24.00\" />\n  <circle class=\"grid\" cx=\"160.00\" cy=\"65.00\" r=\"36.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"17.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"26.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"205.65\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"188.21\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"160.00\" y2=\"113.00\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"103.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"79.83\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"114.35\" y2=\"50.17\" />\n  <line class=\"axis\" x1=\"160.00\" y1=\"65.00\" x2=\"131.79\" y2=\"26.17\" />\n  <text class=\"axis-label\" x=\"160.00\" y=\"5.00\">SPEC</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"16.46\">ROOT</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"46.46\">IND</text>\n  <text class=\"axis-label\" x=\"217.06\" y=\"83.54\">EXT</text>\n  <text class=\"axis-label\" x=\"195.27\" y=\"113.54\">TIME</text>\n  <text class=\"axis-label\" x=\"160.00\" y=\"125.00\">CONS</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"113.54\">TIER</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"83.54\">FLAG</text>\n  <text class=\"axis-label\" x=\"102.94\" y=\"46.46\">CHAIN</text>\n  <text class=\"axis-label\" x=\"124.73\" y=\"16.46\">FALSE</text>\n  <polygon class=\"reference-poly\" points=\"160.00,29.00 181.16,35.88 194.24,53.88 194.24,76.12 181.16,94.12 160.00,101.00 138.84,94.12 125.76,76.12 125.76,53.88 138.84,35.88\" />\n  <polygon class=\"claim-poly\" points=\"160.00,49.00 160.00,65.00 175.22,60.06 182.83,72.42 174.11,84.42 160.00,65.00 157.18,68.88 160.00,65.00 160.00,65.00 160.00,65.00\" stroke=\"#C4503C\" fill=\"#C4503C\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"82.42\" x2=\"176.11\" y2=\"86.42\" />\n  <line class=\"null-mark\" x1=\"172.11\" y1=\"86.42\" x2=\"176.11\" y2=\"82.42\" />\n  <line class=\"divider\" x1=\"16.00\" y1=\"135.00\" x2=\"304.00\" y2=\"135.00\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"124.00\" y2=\"162.00\" stroke=\"#C49A4A\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"142.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"160.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"178.00\" y2=\"175.00\" stroke=\"#C4503C\" />\n  <line class=\"edge\" x1=\"160.00\" y1=\"210.00\" x2=\"196.00\" y2=\"168.00\" stroke=\"#7B8EA0\" />\n  <circle class=\"source-node\" cx=\"124.00\" cy=\"162.00\" r=\"4.00\" fill=\"#C49A4A\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"142.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"160.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"178.00\" cy=\"175.00\" r=\"4.00\" fill=\"#C4503C\" fill-opacity=\"1.00\" />\n  <circle class=\"source-node\" cx=\"196.00\" cy=\"168.00\" r=\"4.00\" fill=\"#7B8EA0\" fill-opacity=\"1.00\" />\n  <circle class=\"claim-node\" cx=\"160.00\" cy=\"210.00\" r=\"6.00\" fill=\"#C4503C\" />\n  <text class=\"score-label\" x=\"160.00\" y=\"222.00\">0.000000</text>\n</svg>"
     ],
     "extraction": {
       "article_level": {
@@ -1243,20 +2318,20 @@ export const FIXTURES = [
     "content_type": "fiction",
     "description": "Satirical framing treated as fiction by front gate.",
     "expected_score_result": {
-      "claims": [],
-      "content_type": "fiction",
-      "features": null,
-      "meta": {
-        "algorithm_version": "1.0.0",
-        "content_classifier_confidence": 0.91,
-        "elapsed_ms": 0,
-        "model_version": "unknown",
-        "runtime": "python",
-        "tavily_calls_made": 0
-      },
       "overall_score": null,
       "verdict": "fiction",
-      "weight_profile_used": null
+      "content_type": "fiction",
+      "weight_profile_used": null,
+      "features": null,
+      "claims": [],
+      "meta": {
+        "algorithm_version": "2.0.0",
+        "model_version": "unknown",
+        "runtime": "python",
+        "tavily_calls_made": 0,
+        "elapsed_ms": 0,
+        "content_classifier_confidence": 0.91
+      }
     },
     "expected_svg": [],
     "extraction": {

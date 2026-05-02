@@ -3,40 +3,43 @@ import { ALGORITHM_VERSION } from "../shared/config.js";
 import { renderClaimMiniGraph } from "./mini-graph-render.js";
 
 export const FACTUAL_WEIGHTS = {
-  claim_specificity: 0.1,
-  root_depth: 0.11,
-  source_independence: 0.12,
-  external_support_ratio: 0.08,
-  temporal_spread: 0.14,
-  consensus_alignment: 0.05,
-  source_tier: 0.11,
-  rhetorical_red_flags: 0.07,
-  citation_chain_closure: 0.08,
-  claim_falsifiability: 0.14,
+  claim_specificity: 0.09,
+  root_depth: 0.1,
+  source_independence: 0.11,
+  evidence_volume: 0.1,
+  external_support_ratio: 0.07,
+  temporal_spread: 0.13,
+  consensus_alignment: 0.04,
+  source_tier: 0.1,
+  rhetorical_red_flags: 0.06,
+  citation_chain_closure: 0.07,
+  claim_falsifiability: 0.13,
 };
 
 export const OPINION_WEIGHTS = {
-  claim_specificity: 0.08,
-  root_depth: 0.06,
-  source_independence: 0.1,
-  external_support_ratio: 0.06,
-  temporal_spread: 0.12,
-  consensus_alignment: 0.04,
-  source_tier: 0.08,
-  rhetorical_red_flags: 0.14,
-  citation_chain_closure: 0.08,
-  claim_falsifiability: 0.24,
+  claim_specificity: 0.07,
+  root_depth: 0.05,
+  source_independence: 0.09,
+  evidence_volume: 0.08,
+  external_support_ratio: 0.05,
+  temporal_spread: 0.11,
+  consensus_alignment: 0.03,
+  source_tier: 0.07,
+  rhetorical_red_flags: 0.13,
+  citation_chain_closure: 0.07,
+  claim_falsifiability: 0.25,
 };
 
 export const REFERENCE_WEIGHTS = {
-  claim_specificity: 0.16,
-  root_depth: 0.06,
-  source_independence: 0.06,
-  external_support_ratio: 0.04,
-  temporal_spread: 0.08,
-  consensus_alignment: 0.1,
-  source_tier: 0.06,
-  rhetorical_red_flags: 0.12,
+  claim_specificity: 0.15,
+  root_depth: 0.05,
+  source_independence: 0.05,
+  evidence_volume: 0.08,
+  external_support_ratio: 0.03,
+  temporal_spread: 0.07,
+  consensus_alignment: 0.09,
+  source_tier: 0.05,
+  rhetorical_red_flags: 0.11,
   citation_chain_closure: 0.04,
   claim_falsifiability: 0.28,
 };
@@ -45,6 +48,7 @@ const FEATURE_KEYS = [
   "claim_specificity",
   "root_depth",
   "source_independence",
+  "evidence_volume",
   "external_support_ratio",
   "temporal_spread",
   "consensus_alignment",
@@ -57,6 +61,7 @@ const FEATURE_KEYS = [
 const PER_CLAIM_FEATURE_KEYS = [
   "claim_specificity",
   "root_depth",
+  "evidence_volume",
   "temporal_spread",
   "consensus_alignment",
   "source_tier",
@@ -220,6 +225,31 @@ function externalSupportRatio(articleLevel) {
   return clamp01(Math.min(ratio, 1));
 }
 
+function saturatingVolume(units, scale) {
+  return clamp01(round6(1 - Math.exp(-Number(units || 0) / Math.max(scale, 0.000001))));
+}
+
+function evidenceVolume(extraction) {
+  const citations = allCitations(extraction);
+  const distinctRefs = new Set(citations).size;
+  const sourceCount = (extraction.cited_sources || []).length;
+  const checkableFacts = (extraction.article_level?.checkable_facts_per_paragraph || []).reduce(
+    (acc, value) => round6(acc + value),
+    0,
+  );
+  const claimCount = (extraction.claims || []).length;
+  const units = round6(distinctRefs + sourceCount * 0.5 + Math.min(checkableFacts, Math.max(1, claimCount) * 3));
+  return saturatingVolume(units, 8);
+}
+
+function evidenceVolumeForClaim(claim, tavilyResult) {
+  const refs = new Set(claim.cited_source_refs || []);
+  const anchors = (claim.specificity_anchors || []).length;
+  const tavilyRows = tavilyResult?.by_claim_id?.[claim.id]?.length || 0;
+  const units = round6(refs.size + anchors * 0.5 + tavilyRows * 0.75);
+  return saturatingVolume(units, 4);
+}
+
 function parseDate(raw) {
   if (!raw) {
     return null;
@@ -373,6 +403,203 @@ function claimFalsifiability(extraction) {
   return mean(weights, 0);
 }
 
+const ACC_RULE_THRESHOLDS = {
+  source_independence: 0.35,
+  evidence_volume: 0.3,
+  root_depth: 0.25,
+  temporal_spread: 0.15,
+  external_support_ratio: 0.2,
+  claim_specificity: 0.25,
+};
+
+const ACC_PENALTY_WEIGHTS = {
+  single_source_collapse: 0.2,
+  thin_evidence: 0.18,
+  rootless_claim: 0.16,
+  contradiction_pressure: 0.14,
+  temporal_collapse: 0.1,
+  vague_claim: 0.08,
+};
+
+const ACTION_BY_PENALTY = {
+  single_source_collapse: ["request_independent_source", "Add an independent source branch before promotion."],
+  thin_evidence: ["gather_more_evidence", "Collect more direct support for this claim."],
+  rootless_claim: ["seek_primary_root", "Trace support back to a reviewed or primary root."],
+  contradiction_pressure: ["resolve_contradiction", "Adjudicate contradiction before trusting the claim."],
+  temporal_collapse: ["broaden_temporal_sampling", "Check evidence across a wider time window."],
+  vague_claim: ["sharpen_claim", "Rewrite the claim with concrete anchors."],
+};
+
+function hasFeature(features, key) {
+  return features[key] != null && Number.isFinite(Number(features[key]));
+}
+
+function ruleForFeature({ id, features, key, threshold, reason, passWhenMissing = true }) {
+  if (!hasFeature(features, key)) {
+    return { id, passed: passWhenMissing, value: null, threshold, reason };
+  }
+  const value = Number(features[key]);
+  return { id, passed: value >= threshold, value: round6(value), threshold, reason };
+}
+
+function evaluateAccRules(features) {
+  const temporalKnown = hasFeature(features, "temporal_spread");
+  const evidence = hasFeature(features, "evidence_volume") ? Number(features.evidence_volume) : 0;
+  return [
+    ruleForFeature({
+      id: "requires_independent_sources",
+      features,
+      key: "source_independence",
+      threshold: ACC_RULE_THRESHOLDS.source_independence,
+      reason: "Claim has independent source support.",
+    }),
+    ruleForFeature({
+      id: "requires_evidence_volume",
+      features,
+      key: "evidence_volume",
+      threshold: ACC_RULE_THRESHOLDS.evidence_volume,
+      reason: "Claim has enough direct support volume to evaluate.",
+    }),
+    ruleForFeature({
+      id: "requires_rooted_support",
+      features,
+      key: "root_depth",
+      threshold: ACC_RULE_THRESHOLDS.root_depth,
+      reason: "Support reaches a primary, reviewed, or well-rooted source.",
+    }),
+    {
+      id: "requires_temporal_spread",
+      passed: !temporalKnown || evidence < 0.5 || Number(features.temporal_spread) >= ACC_RULE_THRESHOLDS.temporal_spread,
+      value: temporalKnown ? round6(Number(features.temporal_spread)) : null,
+      threshold: ACC_RULE_THRESHOLDS.temporal_spread,
+      reason: "Evidence does not collapse into a single time window.",
+    },
+    ruleForFeature({
+      id: "requires_support_over_contradiction",
+      features,
+      key: "external_support_ratio",
+      threshold: ACC_RULE_THRESHOLDS.external_support_ratio,
+      reason: "External support is sufficient for the claim type.",
+    }),
+    ruleForFeature({
+      id: "requires_specific_claim",
+      features,
+      key: "claim_specificity",
+      threshold: ACC_RULE_THRESHOLDS.claim_specificity,
+      reason: "Claim text has enough concrete anchors to test.",
+    }),
+  ];
+}
+
+function severityBelow(value, threshold) {
+  if (value == null || threshold <= 0 || value >= threshold) {
+    return 0;
+  }
+  return clamp01(round6((threshold - value) / threshold));
+}
+
+function evaluateAccPenalties(features, rules) {
+  const byId = Object.fromEntries(rules.map((rule) => [rule.id, rule]));
+  const candidates = [
+    [
+      "single_source_collapse",
+      severityBelow(byId.requires_independent_sources.value, ACC_RULE_THRESHOLDS.source_independence),
+      "Supporting evidence collapses into too little source independence.",
+    ],
+    [
+      "thin_evidence",
+      severityBelow(byId.requires_evidence_volume.value, ACC_RULE_THRESHOLDS.evidence_volume),
+      "Direct support volume is too low for confident scoring.",
+    ],
+    [
+      "rootless_claim",
+      severityBelow(byId.requires_rooted_support.value, ACC_RULE_THRESHOLDS.root_depth),
+      "Support does not reach a primary, reviewed, or well-rooted source.",
+    ],
+    [
+      "contradiction_pressure",
+      severityBelow(byId.requires_support_over_contradiction.value, ACC_RULE_THRESHOLDS.external_support_ratio),
+      "External support is too weak relative to the claim.",
+    ],
+    [
+      "temporal_collapse",
+      byId.requires_temporal_spread.passed
+        ? 0
+        : severityBelow(features.temporal_spread, ACC_RULE_THRESHOLDS.temporal_spread),
+      "Evidence is concentrated in a narrow time window.",
+    ],
+    [
+      "vague_claim",
+      severityBelow(byId.requires_specific_claim.value, ACC_RULE_THRESHOLDS.claim_specificity),
+      "Claim is too vague to adjudicate cleanly.",
+    ],
+  ];
+
+  const penalties = [];
+  for (const [id, severity, reason] of candidates) {
+    if (severity <= 0) {
+      continue;
+    }
+    const weight = ACC_PENALTY_WEIGHTS[id];
+    penalties.push({ id, severity, weight, impact: clamp01(round6(severity * weight)), reason });
+  }
+  return penalties;
+}
+
+function recommendActions(penalties, score, threshold = 0.55) {
+  const actions = [];
+  const seen = new Set();
+  const ordered = [...penalties].sort((a, b) => b.impact - a.impact || a.id.localeCompare(b.id));
+  for (const penalty of ordered) {
+    const [id, reason] = ACTION_BY_PENALTY[penalty.id];
+    if (seen.has(id)) {
+      continue;
+    }
+    seen.add(id);
+    actions.push({ id, priority: penalty.impact >= 0.12 ? "high" : "medium", reason });
+  }
+  if (score < threshold && !seen.has("defer_promotion")) {
+    actions.push({
+      id: "defer_promotion",
+      priority: "high",
+      reason: "Do not promote this claim until failed ACC checks are resolved.",
+    });
+  }
+  return actions;
+}
+
+function geometricCore(features, weights) {
+  const entries = Object.entries(weights).filter(([key, weight]) => weight > 0 && hasFeature(features, key));
+  const total = entries.reduce((acc, [, weight]) => round6(acc + weight), 0);
+  if (!entries.length || total <= 0) {
+    return 0;
+  }
+
+  let logSum = 0;
+  for (const [key, weight] of entries) {
+    const value = Math.max(0.001, clamp01(features[key]));
+    logSum += round6((weight / total) * Math.log(value));
+  }
+  return clamp01(round6(Math.exp(logSum)));
+}
+
+function computeAccV2Assessment(features, weights, linearScore) {
+  const core = geometricCore(features, weights);
+  const rules = evaluateAccRules(features);
+  const penalties = evaluateAccPenalties(features, rules);
+  const penaltyTotal = round6(Math.min(0.45, penalties.reduce((acc, penalty) => round6(acc + penalty.impact), 0)));
+  const score = clamp01(round6(0.65 * linearScore + 0.35 * core - penaltyTotal));
+  return {
+    score,
+    linear_score: round6(linearScore),
+    geometric_core: core,
+    penalty_total: penaltyTotal,
+    rules,
+    penalties,
+    actions: recommendActions(penalties, score),
+  };
+}
+
 function claimLevelFeatures(claim, extraction, tavilyResult) {
   const index = sourceIndex(extraction);
 
@@ -411,6 +638,7 @@ function claimLevelFeatures(claim, extraction, tavilyResult) {
   return {
     claim_specificity: f1,
     root_depth: f2,
+    evidence_volume: evidenceVolumeForClaim(claim, tavilyResult),
     temporal_spread: f5,
     consensus_alignment: f6,
     source_tier: f7,
@@ -425,6 +653,7 @@ export function computeFeatureScores(extraction, tavilyResult) {
     claim_specificity: claimSpecificity(extraction),
     root_depth: rootDepth(extraction),
     source_independence: sourceIndependence(extraction),
+    evidence_volume: evidenceVolume(extraction),
     external_support_ratio: externalSupportRatio(extraction.article_level),
     temporal_spread: temporalSpread(extraction, tavily),
     consensus_alignment: consensusAlignment(extraction),
@@ -474,8 +703,8 @@ export function computeOverallScore(features, profileWeights) {
     raw = round6(raw + round6(value * effectiveWeights[key]));
   }
 
-  const score = clamp01(raw);
-  return { score, verdict: scoreToVerdict(score) };
+  const assessment = computeAccV2Assessment(available, effectiveWeights, clamp01(raw));
+  return { ...assessment, verdict: scoreToVerdict(assessment.score) };
 }
 
 export function computePerClaimScore(claimFeatures, profileWeights) {
@@ -486,7 +715,8 @@ export function computePerClaimScore(claimFeatures, profileWeights) {
     }
   }
   if (!Object.keys(eligible).length) {
-    return { score: 0, verdict: "unreliable" };
+    const assessment = computeAccV2Assessment({}, {}, 0);
+    return { ...assessment, verdict: "unreliable" };
   }
 
   const baseTotal = round6(PER_CLAIM_FEATURE_KEYS.reduce((acc, key) => round6(acc + profileWeights[key]), 0));
@@ -514,8 +744,8 @@ export function computePerClaimScore(claimFeatures, profileWeights) {
     raw = round6(raw + round6(value * weights[key]));
   }
 
-  const score = clamp01(raw);
-  return { score, verdict: scoreToVerdict(score) };
+  const assessment = computeAccV2Assessment(eligible, weights, clamp01(raw));
+  return { ...assessment, verdict: scoreToVerdict(assessment.score) };
 }
 
 function buildClaimFeatureSet(claimOnlyFeatures, articleFeatures) {
@@ -607,6 +837,12 @@ export function scoreText(extraction, tavilyResult, contentType, contentConfiden
       char_end: claim.char_end,
       score: claimScore.score,
       verdict: claimScore.verdict,
+      linear_score: claimScore.linear_score,
+      geometric_core: claimScore.geometric_core,
+      penalty_total: claimScore.penalty_total,
+      rules: claimScore.rules,
+      penalties: claimScore.penalties,
+      actions: claimScore.actions,
       feature_breakdown: claimBreakdown,
       rationale: claimRationale(claimBreakdown, claimScore.verdict),
       mini_graph_svg: "",
@@ -619,6 +855,12 @@ export function scoreText(extraction, tavilyResult, contentType, contentConfiden
   return {
     overall_score: overall.score,
     verdict: overall.verdict,
+    linear_score: overall.linear_score,
+    geometric_core: overall.geometric_core,
+    penalty_total: overall.penalty_total,
+    rules: overall.rules,
+    penalties: overall.penalties,
+    actions: overall.actions,
     content_type: normalizedType,
     weight_profile_used: normalizedType,
     features: articleFeatures,

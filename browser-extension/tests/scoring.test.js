@@ -144,7 +144,7 @@ test("round6 contract helper", () => {
 test("score text shape includes algorithm metadata", async () => {
   await loadDomainList();
   const result = scoreText(minimalExtraction(), null, "factual", 0.9);
-  assert.equal(result.meta.algorithm_version, "1.0.0");
+  assert.equal(result.meta.algorithm_version, "2.0.0");
   assert.ok(["factual", "opinion", "reference", "fiction"].includes(result.content_type));
 });
 
@@ -157,6 +157,7 @@ test("compute feature scores returns all feature keys", async () => {
     "claim_falsifiability",
     "claim_specificity",
     "consensus_alignment",
+    "evidence_volume",
     "external_support_ratio",
     "rhetorical_red_flags",
     "root_depth",
@@ -171,4 +172,17 @@ test("score text creates claim mini graph strings", async () => {
   const result = scoreText(minimalExtraction(), null, "factual", 0.9);
   assert.equal(typeof result.claims[0].mini_graph_svg, "string");
   assert.ok(result.claims[0].mini_graph_svg.startsWith('<svg viewBox="0 0 320 240"'));
+});
+
+test("score text includes deterministic ACC v2 trace fields", async () => {
+  await loadDomainList();
+  const result = scoreText(minimalExtraction(), null, "factual", 0.9);
+  assert.equal(typeof result.linear_score, "number");
+  assert.equal(typeof result.geometric_core, "number");
+  assert.equal(typeof result.penalty_total, "number");
+  assert.ok(Array.isArray(result.rules));
+  assert.ok(Array.isArray(result.penalties));
+  assert.ok(Array.isArray(result.actions));
+  assert.equal(typeof result.claims[0].feature_breakdown.evidence_volume, "number");
+  assert.ok(Array.isArray(result.claims[0].rules));
 });

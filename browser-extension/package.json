@@ -1,6 +1,6 @@
 {
   "name": "@theseus/anti-conspirarcy-theorem-extension",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Manifest V3 browser extension for ACC page analysis.",
   "private": true,
   "type": "module",

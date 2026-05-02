@@ -10,6 +10,7 @@ The extension includes:
 - Popup analysis control for the active tab
 - Content script paragraph extraction and claim marker rail
 - Deterministic ACC scoring path that works without a model download
+- ACC v2 trace output: evidence volume, geometric core, penalties, rules, and actions
 - Build pipeline using esbuild
 - Deterministic scoring algorithm JavaScript port
 - Deterministic mini graph SVG renderer JavaScript port

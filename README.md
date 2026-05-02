@@ -2,7 +2,7 @@
 
 This repository packages the Anti-Conspiracy Constraint (ACC) as a standalone theorem implementation and a deployable browser extension.
 
-ACC is a structural integrity score for claim graphs. It does not decide truth by vibes or by popularity. It asks whether a claim is rooted, independently supported, specific, temporally spread, and free of collapsed citation loops.
+ACC is a structural integrity score for claim graphs. It does not decide truth by vibes or by popularity. It asks whether a claim is rooted, independently supported, specific, temporally spread, backed by enough evidence volume, and free of collapsed citation loops.
 
 ## What is included
 
@@ -13,13 +13,23 @@ ACC is a structural integrity score for claim graphs. It does not decide truth b
 
 ## What it computes
 
-For each claim node, ACC combines five normalized traits:
+For each claim node, ACC v2 combines six normalized traits:
 
-- `root_depth` (weight `0.25`)
-- `source_independence` (weight `0.25`)
+- `root_depth` (weight `0.20`)
+- `source_independence` (weight `0.20`)
 - `support_ratio` (weight `0.15`)
-- `claim_specificity` (weight `0.15`)
-- `temporal_spread` (weight `0.20`)
+- `claim_specificity` (weight `0.12`)
+- `temporal_spread` (weight `0.18`)
+- `evidence_volume` (weight `0.15`)
+
+The final score combines a weighted linear score with a geometric core and subtracts deterministic symbolic penalties. Each claim report includes:
+
+- `linear_score`
+- `geometric_core`
+- `penalty_total`
+- `rules`
+- `penalties`
+- `actions`
 
 Claims with `ACC < threshold` (default `0.55`) are flagged as `suspect`.
 
@@ -114,6 +124,8 @@ browser-extension/
 ```
 
 The extension build is deterministic by default. It uses the ACC JavaScript scoring path and can run without a model download. The WebLLM/Gemma path remains optional until a public model artifact URL is configured.
+
+The extension scorer reports ACC v2 trace fields too, so downloaded ZIPs and `npx act-theorem install` builds expose the same `evidence_volume`, rules, penalties, and actions shape as the Python package.
 
 ## Publishing
 
