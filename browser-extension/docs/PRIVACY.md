@@ -4,6 +4,9 @@ This extension is local first by design.
 
 - No telemetry is sent.
 - No analytics is included.
+- WebLLM model artifacts are downloaded from the hosted `/act` route or public fallback artifact hosts.
+- Page text is processed locally by WebLLM and is not sent to model artifact hosts.
+- Tavily and Theseus web-search enrichment send selected claim queries only when enabled by settings.
 - Tavily is optional and uses user provided API credentials.
 - Model runtime requires `wasm-unsafe-eval` for WebAssembly execution.
 

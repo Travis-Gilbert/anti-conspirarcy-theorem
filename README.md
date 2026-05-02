@@ -123,7 +123,7 @@ For local development, open `chrome://extensions`, enable Developer mode, and lo
 browser-extension/
 ```
 
-The extension build is deterministic by default. It uses the ACC JavaScript scoring path and can run without a model download. The WebLLM/Gemma path remains optional until a public model artifact URL is configured.
+The extension uses the ACC JavaScript scorer and the browser WebLLM pipeline. Model loading points at the hosted `/act` Gemma 2 artifact route, with a public WebLLM fallback model if the hosted route is unavailable.
 
 The extension scorer reports ACC v2 trace fields too, so downloaded ZIPs and `npx act-theorem install` builds expose the same `evidence_volume`, rules, penalties, and actions shape as the Python package.
 
