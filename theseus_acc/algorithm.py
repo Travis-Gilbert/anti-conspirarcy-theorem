@@ -38,13 +38,19 @@ from typing import Any
 
 import networkx as nx
 
+from . import diagnostics as diagnostics_module
 from .spatial import spatial_independence
-from .rules import ACC_V2_VERSION, evaluate_v2
+from .rules import ACC_V2_VERSION, PENALTY_CAP, evaluate_v2
 from .traits import (
+    citation_chain_collapse,
     claim_specificity,
+    contradiction_load,
     evidence_volume,
+    falsifiability,
+    rhetorical_pressure,
     root_depth,
     source_independence,
+    source_quality,
     support_ratio,
     temporal_spread,
 )
@@ -84,6 +90,12 @@ class ClaimACC:
     rules: list[dict[str, Any]] = field(default_factory=list)
     penalties: list[dict[str, Any]] = field(default_factory=list)
     actions: list[dict[str, Any]] = field(default_factory=list)
+    # Additive in v2.1: structured outputs the A2UI scene builder consumes.
+    support_strength: float = 0.0
+    epistemic_risk: float = 0.0
+    claim_state: str = 'unresolved'
+    verification_gap: str = ''
+    diagnostics: dict[str, Any] = field(default_factory=dict)
     version: str = ACC_V2_VERSION
 
 
@@ -108,6 +120,11 @@ class ACCReport:
                     'rules': _round_payload(entry.rules),
                     'penalties': _round_payload(entry.penalties),
                     'actions': _round_payload(entry.actions),
+                    'support_strength': round(entry.support_strength, 6),
+                    'epistemic_risk': round(entry.epistemic_risk, 6),
+                    'claim_state': entry.claim_state,
+                    'verification_gap': entry.verification_gap,
+                    'diagnostics': _round_payload(entry.diagnostics),
                     'version': entry.version,
                 }
                 for claim_id, entry in self.scores.items()
@@ -119,13 +136,21 @@ class ACCReport:
         }
 
 
+# v2.1 weights: the original six traits keep 0.70 of total weight (each
+# scaled by 0.70 of its prior weight). Five new first-class traits share
+# the remaining 0.30 evenly. Sum equals 1.0.
 DEFAULT_WEIGHTS = {
-    'root_depth': 0.20,
-    'source_independence': 0.20,
-    'support_ratio': 0.15,
-    'claim_specificity': 0.12,
-    'temporal_spread': 0.18,
-    'evidence_volume': 0.15,
+    'root_depth': 0.140,
+    'source_independence': 0.140,
+    'support_ratio': 0.105,
+    'claim_specificity': 0.084,
+    'temporal_spread': 0.126,
+    'evidence_volume': 0.105,
+    'falsifiability': 0.060,
+    'rhetorical_pressure': 0.060,
+    'source_quality': 0.060,
+    'contradiction_load': 0.060,
+    'citation_chain_collapse': 0.060,
 }
 
 
@@ -187,6 +212,7 @@ def compute_acc(
     include_spatial = bool(options.get('include_spatial', False))
     threshold = float(options.get('threshold', 0.55))
     root_max_hops = int(options.get('root_max_hops', 4))
+    root_tau = float(options.get('root_tau', 2.0))
     temporal_tau = float(options.get('temporal_tau', 30.0))
     evidence_volume_scale = float(options.get('evidence_volume_scale', 6.0))
     reference_corpus = options.get('reference_corpus')
@@ -199,7 +225,12 @@ def compute_acc(
             continue
 
         traits = {
-            'root_depth': root_depth(work_graph, node, max_hops=root_max_hops),
+            'root_depth': root_depth(
+                work_graph,
+                node,
+                max_hops=root_max_hops,
+                tau=root_tau,
+            ),
             'source_independence': source_independence(work_graph, node),
             'support_ratio': support_ratio(work_graph, node),
             'claim_specificity': claim_specificity(
@@ -213,6 +244,11 @@ def compute_acc(
                 node,
                 scale=evidence_volume_scale,
             ),
+            'falsifiability': falsifiability(work_graph, node),
+            'rhetorical_pressure': rhetorical_pressure(work_graph, node),
+            'source_quality': source_quality(work_graph, node),
+            'contradiction_load': contradiction_load(work_graph, node),
+            'citation_chain_collapse': citation_chain_collapse(work_graph, node),
         }
 
         if include_spatial:
@@ -233,6 +269,39 @@ def compute_acc(
         )
         acc = evaluation['acc_score']
 
+        diag = diagnostics_module.collect(work_graph, node, max_hops=root_max_hops)
+        gap = diagnostics_module.verification_gap(
+            traits=traits,
+            rules=evaluation['rules'],
+            penalties=evaluation['penalties'],
+            diagnostics=diag,
+        )
+        state = diagnostics_module.classify_claim_state(
+            acc_score=acc,
+            threshold=threshold,
+            traits=traits,
+            rules=evaluation['rules'],
+            penalties=evaluation['penalties'],
+            diagnostics=diag,
+        )
+        support_strength = max(
+            0.0,
+            min(
+                1.0,
+                (0.65 * float(evaluation['linear_score']))
+                + (0.35 * float(evaluation['geometric_core'])),
+            ),
+        )
+        # Five-component risk: penalty + collapse + contradiction + rootless + thin.
+        risk = (
+            0.30 * (float(evaluation['penalty_total']) / max(PENALTY_CAP, 1e-6))
+            + 0.25 * float(diag['source_collapse_ratio'])
+            + 0.15 * min(1.0, float(diag['contradiction_count']) / 3.0)
+            + 0.15 * (1.0 - min(1.0, float(diag['verified_root_count']) / 2.0))
+            + 0.15 * (1.0 - float(traits['evidence_volume']))
+        )
+        epistemic_risk = max(0.0, min(1.0, risk))
+
         claim_id = str(node)
         scores[claim_id] = ClaimACC(
             claim_id=claim_id,
@@ -245,6 +314,11 @@ def compute_acc(
             rules=evaluation['rules'],
             penalties=evaluation['penalties'],
             actions=evaluation['actions'],
+            support_strength=support_strength,
+            epistemic_risk=epistemic_risk,
+            claim_state=state,
+            verification_gap=gap,
+            diagnostics=diag,
             version=evaluation['version'],
         )
 
