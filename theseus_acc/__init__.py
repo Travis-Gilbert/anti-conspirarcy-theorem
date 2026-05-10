@@ -1,4 +1,5 @@
-from . import diagnostics
+from . import a2ui, diagnostics, schemas
+from .a2ui import build_evidence_scene, validate_evidence_scene
 from .algorithm import ACCReport, ClaimACC, DEFAULT_WEIGHTS, compute_acc
 from .rules import ACC_V2_VERSION
 from .traits import (
@@ -22,6 +23,10 @@ __all__ = [
     'DEFAULT_WEIGHTS',
     'compute_acc',
     'diagnostics',
+    'a2ui',
+    'schemas',
+    'build_evidence_scene',
+    'validate_evidence_scene',
     # Trait functions (public for callers building custom pipelines).
     'citation_chain_collapse',
     'claim_specificity',
