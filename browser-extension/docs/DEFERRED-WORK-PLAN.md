@@ -12,9 +12,9 @@ Batches 3 through 7 are implemented on `main`:
 
 ## Live Model Route
 
-The shipping config points at `https://travisgilbert.me/act`, which hosts the WebLLM Gemma 2 artifact set:
+The shipping config points at a WebLLM-compatible Gemma artifact set:
 
-- route descriptor: `https://travisgilbert.me/act`
+- route descriptor: `https://huggingface.co/mlc-ai/gemma-2-2b-it-q4f16_1-MLC`
 - chat config: `https://travisgilbert.me/act/resolve/main/mlc-chat-config.json`
 - WebGPU library: `https://travisgilbert.me/act/gemma-2-2b-it-q4f16_1-ctx4k_cs1k-webgpu.wasm`
 

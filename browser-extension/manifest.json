@@ -1,9 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Anti-Conspiracy Theorem",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "version_name": "0.2.0 / ACC 2.1",
+  "homepage_url": "https://travisgilbert.me/act",
   "description": "Structural ACC analysis of web articles with local claim scoring.",
-  "permissions": ["activeTab", "scripting", "storage", "offscreen"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "dist/background.js",

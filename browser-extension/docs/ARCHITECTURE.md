@@ -12,7 +12,7 @@ The active-page pipeline is model-first after onboarding:
 
 1. The popup sends `MSG_START_MODEL_LOAD`.
 2. `src/background/model-loader.js` initializes one shared `MLCRunner` and broadcasts `MSG_MODEL_PROGRESS`.
-3. `MLCRunner` preflights the hosted model route at `https://travisgilbert.me/act`, falls back to a public WebLLM model when allowed, and creates the WebLLM engine.
+3. `MLCRunner` preflights the configured WebLLM model route, falls back to a public WebLLM model when allowed, and creates the WebLLM engine.
 4. `MSG_ANALYZE_PAGE` collects page text from the content script.
 5. WebLLM classifies content type and extracts ACC feature JSON.
 6. `src/background/tavily-client.js` optionally enriches the top claims through Tavily or Theseus web search.
@@ -24,7 +24,7 @@ The active-page pipeline is model-first after onboarding:
 
 The primary model config is in `src/shared/config.js`:
 
-- `MLC_MANIFEST_URL`: `https://travisgilbert.me/act`
+- `MLC_MANIFEST_URL`: primary WebLLM model repository URL
 - `MODEL_VERSION`: configured WebLLM model id
 - `MLC_MODEL_LIB_URL`: hosted WebGPU WASM library under `/act`
 

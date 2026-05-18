@@ -11,3 +11,5 @@ This extension is local first by design.
 - Model runtime requires `wasm-unsafe-eval` for WebAssembly execution.
 
 If federation is enabled, the extension or local peer sends ACC feature bins, score components, content type, cluster metadata, public key, and signature data. It does not send article text, claim text, page URL, or page content.
+
+The use of information received from Google APIs will adhere to the Chrome Web Store User Data Policy, including the Limited Use requirements.
