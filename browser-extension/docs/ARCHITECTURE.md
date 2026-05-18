@@ -12,11 +12,11 @@ The active-page pipeline is model-first after onboarding:
 
 1. The popup sends `MSG_START_MODEL_LOAD`.
 2. `src/background/model-loader.js` initializes one shared `MLCRunner` and broadcasts `MSG_MODEL_PROGRESS`.
-3. `MLCRunner` preflights the hosted Gemma 2 route at `https://travisgilbert.me/act`, falls back to a public WebLLM model when allowed, and creates the WebLLM engine.
+3. `MLCRunner` preflights the hosted model route at `https://travisgilbert.me/act`, falls back to a public WebLLM model when allowed, and creates the WebLLM engine.
 4. `MSG_ANALYZE_PAGE` collects page text from the content script.
 5. WebLLM classifies content type and extracts ACC feature JSON.
 6. `src/background/tavily-client.js` optionally enriches the top claims through Tavily or Theseus web search.
-7. `src/inference/scoring.js` computes the ACC v2 score locally and emits claim mini graphs.
+7. `src/inference/scoring.js` computes the ACC v2.1 score locally and emits claim mini graphs.
 8. Federation processing adds correlation badge data without sending page text or claim text.
 9. The content script maps claim character ranges back to page segments and paints the rail.
 
@@ -25,7 +25,7 @@ The active-page pipeline is model-first after onboarding:
 The primary model config is in `src/shared/config.js`:
 
 - `MLC_MANIFEST_URL`: `https://travisgilbert.me/act`
-- `MODEL_VERSION`: `gemma-2-2b-it-q4f16_1-MLC`
+- `MODEL_VERSION`: configured WebLLM model id
 - `MLC_MODEL_LIB_URL`: hosted WebGPU WASM library under `/act`
 
 The fallback model is `Llama-3.2-1B-Instruct-q4f16_1-MLC` from public WebLLM-compatible artifact URLs.
@@ -33,6 +33,16 @@ The fallback model is `Llama-3.2-1B-Instruct-q4f16_1-MLC` from public WebLLM-com
 ## Privacy Boundary
 
 Page text is processed locally by the extension and WebLLM runtime. Model artifact hosts receive only artifact download requests. Tavily and Theseus web-search enrichment send selected claim queries only when enabled by settings. Federation submissions omit article text, claim text, page URL, and page content.
+
+## Algorithm Boundary
+
+The JavaScript scorer preserves the extension's legacy extraction feature names
+for compatibility, but maps them into the canonical ACC v2.1 trait vocabulary:
+`support_ratio`, `falsifiability`, `rhetorical_pressure`, `source_quality`,
+`contradiction_load`, and `citation_chain_collapse`. Scored claims expose the
+same report-level fields as the Python package: rules, penalties, actions,
+diagnostics, `claim_state`, `verification_gap`, `support_strength`, and
+`epistemic_risk`.
 
 ## Validation Boundary
 

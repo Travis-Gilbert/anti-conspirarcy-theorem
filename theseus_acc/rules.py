@@ -7,7 +7,7 @@ import networkx as nx
 
 from .traits import support_neighbors, support_source_count
 
-ACC_V2_VERSION = '2.0.0'
+ACC_V2_VERSION = '2.1.0'
 PENALTY_CAP = 0.45
 
 RULE_THRESHOLDS = {

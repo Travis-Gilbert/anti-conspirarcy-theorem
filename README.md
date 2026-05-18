@@ -13,14 +13,19 @@ ACC is a structural integrity score for claim graphs. It does not decide truth b
 
 ## What it computes
 
-For each claim node, ACC v2 combines six normalized traits:
+For each claim node, ACC v2.1 combines eleven normalized traits:
 
-- `root_depth` (weight `0.20`)
-- `source_independence` (weight `0.20`)
-- `support_ratio` (weight `0.15`)
-- `claim_specificity` (weight `0.12`)
-- `temporal_spread` (weight `0.18`)
-- `evidence_volume` (weight `0.15`)
+- `root_depth` (weight `0.140`)
+- `source_independence` (weight `0.140`)
+- `support_ratio` (weight `0.105`)
+- `claim_specificity` (weight `0.084`)
+- `temporal_spread` (weight `0.126`)
+- `evidence_volume` (weight `0.105`)
+- `falsifiability` (weight `0.060`)
+- `rhetorical_pressure` (weight `0.060`)
+- `source_quality` (weight `0.060`)
+- `contradiction_load` (weight `0.060`)
+- `citation_chain_collapse` (weight `0.060`)
 
 The final score combines a weighted linear score with a geometric core and subtracts deterministic symbolic penalties. Each claim report includes:
 
@@ -30,8 +35,18 @@ The final score combines a weighted linear score with a geometric core and subtr
 - `rules`
 - `penalties`
 - `actions`
+- `support_strength`
+- `epistemic_risk`
+- `claim_state`
+- `verification_gap`
+- `diagnostics`
 
 Claims with `ACC < threshold` (default `0.55`) are flagged as `suspect`.
+
+The optional outcome layer in `theseus_acc.outcomes` records deterministic ACC
+decisions beside later outcome labels. It can propose a reviewable threshold
+calibration from replayed outcomes, but it cannot rewrite weights, mutate the
+live threshold, or promote itself automatically.
 
 ## Install
 
@@ -123,9 +138,9 @@ For local development, open `chrome://extensions`, enable Developer mode, and lo
 browser-extension/
 ```
 
-The extension uses the ACC JavaScript scorer and the browser WebLLM pipeline. Model loading points at the hosted `/act` Gemma 2 artifact route, with a public WebLLM fallback model if the hosted route is unavailable.
+The extension uses the ACC JavaScript scorer and the browser WebLLM pipeline. Model loading points at the hosted `/act` artifact route configured in `browser-extension/src/shared/config.js`, with a public WebLLM fallback model if the hosted route is unavailable.
 
-The extension scorer reports ACC v2 trace fields too, so downloaded ZIPs and `npx act-theorem install` builds expose the same `evidence_volume`, rules, penalties, and actions shape as the Python package.
+The extension scorer reports ACC v2.1 trace fields too, so downloaded ZIPs and `npx act-theorem install` builds expose the same eleven-trait vocabulary, rules, penalties, actions, diagnostics, `claim_state`, `support_strength`, and `epistemic_risk` shape as the Python package.
 
 ## Publishing
 

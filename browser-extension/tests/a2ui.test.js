@@ -81,7 +81,7 @@ function fakeStrongScoreResult() {
         },
       },
     ],
-    meta: { algorithm_version: "2.0.0" },
+    meta: { algorithm_version: "2.1.0" },
   };
 }
 
@@ -153,7 +153,7 @@ function fakeWeakScoreResult() {
         },
       },
     ],
-    meta: { algorithm_version: "2.0.0" },
+    meta: { algorithm_version: "2.1.0" },
   };
 }
 

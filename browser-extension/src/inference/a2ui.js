@@ -36,6 +36,55 @@ function clamp01(n) {
   return round6(Math.max(0, Math.min(1, Number(n))));
 }
 
+const CANONICAL_TRAIT_KEYS = [
+  "root_depth",
+  "source_independence",
+  "support_ratio",
+  "claim_specificity",
+  "temporal_spread",
+  "evidence_volume",
+  "falsifiability",
+  "rhetorical_pressure",
+  "source_quality",
+  "contradiction_load",
+  "citation_chain_collapse",
+];
+
+function firstFinite(...values) {
+  for (const value of values) {
+    if (value != null && Number.isFinite(Number(value))) {
+      return Number(value);
+    }
+  }
+  return null;
+}
+
+function withCanonicalTraits(features) {
+  const out = { ...(features || {}) };
+  const external = firstFinite(out.external_support_ratio);
+  const consensus = firstFinite(out.consensus_alignment);
+  if (out.support_ratio == null) {
+    if (external != null && consensus != null) {
+      out.support_ratio = clamp01(Math.min(external, consensus));
+    } else if (external != null || consensus != null) {
+      out.support_ratio = clamp01(external ?? consensus);
+    }
+  }
+  const aliases = {
+    falsifiability: firstFinite(out.falsifiability, out.claim_falsifiability),
+    rhetorical_pressure: firstFinite(out.rhetorical_pressure, out.rhetorical_red_flags),
+    source_quality: firstFinite(out.source_quality, out.source_tier),
+    contradiction_load: firstFinite(out.contradiction_load, out.consensus_alignment, 1),
+    citation_chain_collapse: firstFinite(out.citation_chain_collapse, out.citation_chain_closure),
+  };
+  for (const [key, value] of Object.entries(aliases)) {
+    if (out[key] == null && value != null) {
+      out[key] = clamp01(value);
+    }
+  }
+  return out;
+}
+
 function makeComponent(type, claimId, props) {
   return {
     type,
@@ -195,19 +244,25 @@ function buildComponentsForRecord({ claimId, claimText, record, weights, calibra
 }
 
 function supportStrengthFromRecord(record) {
+  if (Number.isFinite(Number(record.support_strength))) {
+    return clamp01(record.support_strength);
+  }
   const linear = Number(record.linear_score || 0);
   const core = Number(record.geometric_core || 0);
   return clamp01(0.65 * linear + 0.35 * core);
 }
 
 function epistemicRiskFromRecord(record) {
+  if (Number.isFinite(Number(record.epistemic_risk))) {
+    return clamp01(record.epistemic_risk);
+  }
   // Mirrors the Python formula from compute_acc; the JS scorer does not
   // produce all five components, so use the available proxies:
   //   penalty_total / 0.45                        weight 0.40
   //   1 - source_independence (article)           weight 0.30
   //   1 - root_depth (article)                    weight 0.20
   //   1 - evidence_volume (article)               weight 0.10
-  const features = record.feature_breakdown || {};
+  const features = withCanonicalTraits(record.feature_breakdown || {});
   const penalty = Math.min(1, Number(record.penalty_total || 0) / 0.45);
   const indep = 1 - clamp01(features.source_independence || 0);
   const rootless = 1 - clamp01(features.root_depth || 0);
@@ -216,10 +271,13 @@ function epistemicRiskFromRecord(record) {
 }
 
 function verificationGapFromRecord(record) {
-  const features = record.feature_breakdown || {};
+  if (typeof record.verification_gap === "string") {
+    return record.verification_gap;
+  }
+  const features = withCanonicalTraits(record.feature_breakdown || {});
   const independence = Number(features.source_independence ?? 1);
   const root = Number(features.root_depth ?? 0);
-  const consensus = Number(features.consensus_alignment ?? 1);
+  const contradiction = Number(features.contradiction_load ?? features.consensus_alignment ?? 1);
   const evidence = Number(features.evidence_volume ?? 0);
   const specificity = Number(features.claim_specificity ?? 0);
   const temporal = Number(features.temporal_spread ?? 1);
@@ -233,7 +291,7 @@ function verificationGapFromRecord(record) {
   if (root < 0.25) {
     return "Needs a verified or reviewed primary root.";
   }
-  if (consensus < 0.5) {
+  if (contradiction < 0.5) {
     return "Contradiction pressure outweighs support. Adjudicate before promoting.";
   }
   if (evidence < 0.3) {
@@ -249,23 +307,26 @@ function verificationGapFromRecord(record) {
 }
 
 function classifyClaimState(record, threshold) {
-  const features = record.feature_breakdown || {};
+  if (typeof record.claim_state === "string" && record.claim_state) {
+    return record.claim_state;
+  }
+  const features = withCanonicalTraits(record.feature_breakdown || {});
   const score = Number(record.score || 0);
   const independence = Number(features.source_independence ?? 1);
   const evidence = Number(features.evidence_volume ?? 0);
   const root = Number(features.root_depth ?? 0);
-  const closure = Number(features.citation_chain_closure ?? 1);
-  const consensus = Number(features.consensus_alignment ?? 1);
+  const closure = Number(features.citation_chain_collapse ?? features.citation_chain_closure ?? 1);
+  const contradiction = Number(features.contradiction_load ?? features.consensus_alignment ?? 1);
   const specificity = Number(features.claim_specificity ?? 0);
   const branchCount = (record.rules || []).find((r) => r.id === "requires_independent_sources")?.value ?? 0;
 
-  if (score >= Math.max(0.65, threshold) && independence >= 0.5 && root >= 0.25 && consensus >= 0.5) {
+  if (score >= Math.max(0.65, threshold) && independence >= 0.5 && root >= 0.25 && contradiction >= 0.5) {
     return "well_supported";
   }
   if (closure < 0.5 && independence < 0.5) {
     return "source_collapsed";
   }
-  if (consensus < 0.5) {
+  if (contradiction < 0.5) {
     return "contradicted";
   }
   if (evidence < 0.3 || branchCount === 0) {
@@ -284,16 +345,32 @@ function classifyClaimState(record, threshold) {
 }
 
 function sourceCollapsePropsFromRecord(record, features) {
+  if (record.diagnostics && Number(record.diagnostics.visible_source_count || 0) >= 2) {
+    const collapseRatio = clamp01(record.diagnostics.source_collapse_ratio ?? 0);
+    if (collapseRatio <= 0) {
+      return null;
+    }
+    return {
+      visible_source_count: Number(record.diagnostics.visible_source_count || 0),
+      canonical_origin_count: Number(record.diagnostics.canonical_origin_count || 0),
+      source_collapse_ratio: round6(collapseRatio),
+      warning:
+        collapseRatio >= 0.5
+          ? "Many citations trace back to fewer canonical origins. Find an independent primary source."
+          : "Some citations share canonical origins. Worth verifying independence.",
+    };
+  }
   // The browser scoring path doesn't track canonical_origin counts; fall
   // back to citation_chain_closure as a proxy: closure < 0.5 indicates
   // collapse pressure. Skip the panel when no signal is present.
-  const closure = Number(features.citation_chain_closure ?? 1);
+  const normalized = withCanonicalTraits(features);
+  const closure = Number(normalized.citation_chain_collapse ?? normalized.citation_chain_closure ?? 1);
   if (closure >= 0.7) {
     return null;
   }
   // Approximate visible/canonical from independence and closure.
   // independence captures top-share; lower independence = higher collapse.
-  const independence = clamp01(features.source_independence ?? 1);
+  const independence = clamp01(normalized.source_independence ?? 1);
   const visible = Math.max(2, Math.round(record.feature_breakdown?.evidence_volume * 8) || 2);
   const collapseRatio = clamp01(1 - closure);
   const canonical = Math.max(1, Math.round(visible * (1 - collapseRatio)));
@@ -316,16 +393,19 @@ function sourceCollapsePropsFromRecord(record, features) {
 }
 
 function inferContradictionCount(features) {
-  const consensus = Number(features?.consensus_alignment ?? 1);
-  if (consensus >= 0.5) {
+  const normalized = withCanonicalTraits(features);
+  const contradiction = Number(normalized?.contradiction_load ?? 1);
+  if (contradiction >= 0.5) {
     return 0;
   }
-  return Math.max(1, Math.round((1 - consensus) * 3));
+  return Math.max(1, Math.round((1 - contradiction) * 3));
 }
 
 function roundFeatures(features) {
   const out = {};
-  for (const [k, v] of Object.entries(features || {})) {
+  const normalized = withCanonicalTraits(features);
+  for (const k of CANONICAL_TRAIT_KEYS) {
+    const v = normalized[k];
     if (v == null) {
       continue;
     }

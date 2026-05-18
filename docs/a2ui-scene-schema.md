@@ -17,7 +17,7 @@ walking props.
 {
   "scene": "EvidenceCockpit",
   "version": "0.1.0",
-  "acc_version": "2.0.0",
+  "acc_version": "2.1.0",
   "claim_count": 1,
   "threshold": 0.55,
   "summary": "",
@@ -211,7 +211,7 @@ when the score falls below threshold.
     "source": "deterministic",
     "score": 0.46,
     "threshold": 0.55,
-    "version": "2.0.0"
+      "version": "2.1.0"
   }
 }
 ```

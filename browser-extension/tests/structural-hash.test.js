@@ -6,7 +6,7 @@ import {
   computeAccStructuralHashV2,
 } from "../src/inference/structural-hash.js";
 
-test("ACC v2 structural hash matches Python contract", async () => {
+test("ACC v2.1 structural hash matches Python contract", async () => {
   const bins = {
     root_depth: 1,
     source_independence: 0,

@@ -3,26 +3,27 @@ from __future__ import annotations
 r"""
 \nACC definition (single-source-of-truth for code + paper):
 
-Let c be a claim node and define normalized traits in [0,1]:
+Let c be a claim node and define normalized ACC v2.1 traits in [0,1]:
   R(c) = root_depth(c)
   I(c) = source_independence(c)
   S(c) = support_ratio(c)
   C(c) = claim_specificity(c)
   T(c) = temporal_spread(c)
   E(c) = evidence_volume(c)
+  F(c) = falsifiability(c)
+  P(c) = rhetorical_pressure(c)
+  Q(c) = source_quality(c)
+  D(c) = contradiction_load(c)
+  H(c) = citation_chain_collapse(c)
 
-ACC v2 combines a linear score with a geometric core, then subtracts
+ACC v2.1 combines a linear score with a geometric core, then subtracts
 deterministic penalties from failed symbolic rules:
 \[
   L(c) = \sum_i w_i x_i,\quad
   G(c) = \prod_i \max(x_i, \epsilon)^{w_i},\quad
   ACC(c) = 0.65 L(c) + 0.35 G(c) - P(c)
 \]
-with default weights
-\[
-  (w_R, w_I, w_S, w_C, w_T, w_E) = (0.20, 0.20, 0.15, 0.12, 0.18, 0.15)
-\]
-and \(\sum_i w_i = 1\).
+with default weights defined in DEFAULT_WEIGHTS and \(\sum_i w_i = 1\).
 
 Threshold rule:
 \[
@@ -189,7 +190,7 @@ def compute_acc(
         claim_nodes: set of node ids that should be scored.
         include_spatial: optional bool; when True adds spatial independence extension.
         threshold: suspect cutoff (default 0.55).
-        weights: optional overrides for the six base traits.
+        weights: optional overrides for the eleven ACC v2.1 traits.
         root_max_hops: max hops for root depth trait (default 4).
         temporal_tau: timescale for temporal spread trait (default 30.0).
         evidence_volume_scale: support-volume saturation scale (default 6.0).

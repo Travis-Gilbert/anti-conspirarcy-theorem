@@ -37,7 +37,7 @@
     "pyproject.toml"
   ],
   "scripts": {
-    "extension:build": "node browser-extension/esbuild.config.mjs",
+    "extension:build": "node bin/anti-conspirarcy-theorem.js extension build",
     "extension:package": "node bin/anti-conspirarcy-theorem.js package --out browser-extension/release/anti-conspirarcy-theorem-extension.zip",
     "extension:unpack": "node bin/anti-conspirarcy-theorem.js install --out browser-extension/release/unpacked",
     "lint:extension": "npm --prefix browser-extension run lint",

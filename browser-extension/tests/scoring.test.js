@@ -144,7 +144,7 @@ test("round6 contract helper", () => {
 test("score text shape includes algorithm metadata", async () => {
   await loadDomainList();
   const result = scoreText(minimalExtraction(), null, "factual", 0.9);
-  assert.equal(result.meta.algorithm_version, "2.0.0");
+  assert.equal(result.meta.algorithm_version, "2.1.0");
   assert.ok(["factual", "opinion", "reference", "fiction"].includes(result.content_type));
 });
 
@@ -154,15 +154,21 @@ test("compute feature scores returns all feature keys", async () => {
   const keys = Object.keys(features).sort();
   assert.deepEqual(keys, [
     "citation_chain_closure",
+    "citation_chain_collapse",
     "claim_falsifiability",
     "claim_specificity",
     "consensus_alignment",
+    "contradiction_load",
     "evidence_volume",
     "external_support_ratio",
+    "falsifiability",
+    "rhetorical_pressure",
     "rhetorical_red_flags",
     "root_depth",
     "source_independence",
+    "source_quality",
     "source_tier",
+    "support_ratio",
     "temporal_spread",
   ]);
 });
@@ -174,7 +180,7 @@ test("score text creates claim mini graph strings", async () => {
   assert.ok(result.claims[0].mini_graph_svg.startsWith('<svg viewBox="0 0 320 240"'));
 });
 
-test("score text includes deterministic ACC v2 trace fields", async () => {
+test("score text includes deterministic ACC v2.1 trace fields", async () => {
   await loadDomainList();
   const result = scoreText(minimalExtraction(), null, "factual", 0.9);
   assert.equal(typeof result.linear_score, "number");
@@ -185,4 +191,11 @@ test("score text includes deterministic ACC v2 trace fields", async () => {
   assert.ok(Array.isArray(result.actions));
   assert.equal(typeof result.claims[0].feature_breakdown.evidence_volume, "number");
   assert.ok(Array.isArray(result.claims[0].rules));
+  assert.equal(typeof result.claims[0].support_strength, "number");
+  assert.equal(typeof result.claims[0].epistemic_risk, "number");
+  assert.equal(typeof result.claims[0].claim_state, "string");
+  assert.equal(typeof result.claims[0].verification_gap, "string");
+  assert.equal(typeof result.claims[0].diagnostics.support_branch_count, "number");
+  assert.equal(typeof result.claims[0].feature_breakdown.support_ratio, "number");
+  assert.equal(typeof result.claims[0].feature_breakdown.falsifiability, "number");
 });
