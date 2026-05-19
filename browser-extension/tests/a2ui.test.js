@@ -1,13 +1,18 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { buildEvidenceScene, validateEvidenceScene } from "../src/inference/a2ui.js";
+import {
+  buildEvidenceScene,
+  buildModelAdjustedEvidenceScene,
+  validateEvidenceScene,
+} from "../src/inference/a2ui.js";
 import {
   ALWAYS_PRESENT_COMPONENTS,
   CALIBRATION_SOURCES,
   COMPONENT_CALIBRATION_BADGE,
   COMPONENT_CLAIM_CARD,
   COMPONENT_CONTRADICTION_PANEL,
+  COMPONENT_MODEL_EXPLANATION_PANEL,
   COMPONENT_NEXT_CHECKS,
   COMPONENT_SOURCE_COLLAPSE_PANEL,
   REQUIRED_PROPS_BY_COMPONENT,
@@ -187,6 +192,29 @@ test("weak score result builds a scene that passes the validator", () => {
   assert.deepEqual(errors, []);
 });
 
+test("model-adjusted builder emits explanation panel and badge source", () => {
+  const scene = buildModelAdjustedEvidenceScene(
+    fakeStrongScoreResult(),
+    {
+      claim_1: {
+        summary: "The model highlights the independent source branches.",
+        citations: ["claim_1", "  "],
+      },
+    },
+    { summary: "The claim is strongly supported after model-side explanation." },
+  );
+
+  const panel = scene.components.find((c) => c.type === COMPONENT_MODEL_EXPLANATION_PANEL);
+  const badge = scene.components.find((c) => c.type === COMPONENT_CALIBRATION_BADGE);
+
+  assert.ok(panel, "expected ModelExplanationPanel");
+  assert.equal(panel.props.summary, "The model highlights the independent source branches.");
+  assert.deepEqual(panel.props.citations, ["claim_1"]);
+  assert.equal(badge.props.source, "model-adjusted");
+  assert.ok(scene.summary.startsWith("The claim is strongly supported"));
+  assert.deepEqual(validateEvidenceScene(scene), []);
+});
+
 // ----- always-present components -------------------------------------------
 
 test("every claim has all always-present components", () => {
@@ -284,6 +312,21 @@ test("validator rejects invalid calibration source", () => {
   }
   const errors = validateEvidenceScene(scene);
   assert.ok(errors.some((e) => e.includes("CalibrationBadge") && e.includes("invalid source")));
+});
+
+test("validator rejects model explanation with deterministic badge", () => {
+  const scene = buildEvidenceScene(fakeStrongScoreResult());
+  const badgeIndex = scene.components.findIndex((c) => c.type === COMPONENT_CALIBRATION_BADGE);
+  scene.components.splice(badgeIndex, 0, {
+    type: COMPONENT_MODEL_EXPLANATION_PANEL,
+    id: "ModelExplanationPanel.claim_1",
+    props: { summary: "Model-generated explanation should change calibration source." },
+  });
+
+  const errors = validateEvidenceScene(scene);
+  assert.ok(
+    errors.some((e) => e.includes("ModelExplanationPanel") && e.includes("model-adjusted")),
+  );
 });
 
 test("validator reports claim_count mismatch", () => {

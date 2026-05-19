@@ -1,5 +1,9 @@
 from . import a2ui, diagnostics, outcomes, schemas
-from .a2ui import build_evidence_scene, validate_evidence_scene
+from .a2ui import (
+    build_evidence_scene,
+    build_model_adjusted_evidence_scene,
+    validate_evidence_scene,
+)
 from .algorithm import ACCReport, ClaimACC, DEFAULT_WEIGHTS, compute_acc
 from .outcomes import (
     ACCDecisionEvent,
@@ -36,6 +40,7 @@ __all__ = [
     'a2ui',
     'schemas',
     'build_evidence_scene',
+    'build_model_adjusted_evidence_scene',
     'validate_evidence_scene',
     'ACCDecisionEvent',
     'ACCOutcomeEvent',

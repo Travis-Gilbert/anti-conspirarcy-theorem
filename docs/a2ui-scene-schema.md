@@ -1,8 +1,9 @@
 # EvidenceCockpit A2UI Scene Schema
 
-The deterministic builder `theseus_acc.a2ui.build_evidence_scene` and the
-strict validator `theseus_acc.a2ui.validate_evidence_scene` work against
-the shape documented here. The browser extension's A2UI catalog renders
+The builders `theseus_acc.a2ui.build_evidence_scene`,
+`theseus_acc.a2ui.build_model_adjusted_evidence_scene`, and the strict
+validator `theseus_acc.a2ui.validate_evidence_scene` work against the
+shape documented here. The browser extension's A2UI catalog renders
 against the same shape; the schema validator in
 `browser-extension/src/model/schemaValidator.js` mirrors these names
 when rejecting Gemma output that drops props or alters ACC scores.
@@ -26,15 +27,16 @@ walking props.
 ```
 
 Required fields: `scene`, `version`, `claim_count`, `components`. The
-`summary` field is empty in deterministic output; the Gemma scene
-generator (PR4) populates it as a one-paragraph explanation.
+`summary` field is empty in deterministic output. Model-adjusted builders
+may populate it as a one-paragraph explanation.
 
 ## Components
 
 Every claim produces, at minimum, a `ClaimCard`, `TraitRadar`,
 `RuleChecklist`, `NextChecks`, and `CalibrationBadge`.
-`SourceCollapsePanel`, `PenaltyList`, and `ContradictionPanel` are
-conditional and only appear when their underlying signal is non-trivial.
+`SourceCollapsePanel`, `PenaltyList`, `ContradictionPanel`, and
+`ModelExplanationPanel` are conditional and only appear when their
+underlying signal is non-trivial.
 
 ### ClaimCard
 
@@ -216,20 +218,22 @@ when the score falls below threshold.
 }
 ```
 
-`source` is `deterministic` for output produced by
-`build_evidence_scene` and `model-adjusted` when the Gemma scene
-generator has rewritten any explanation cell. The validator rejects
-any other value. `score` is the raw ACC value; the badge renderer
+`source` is `deterministic` for ordinary output produced by
+`build_evidence_scene` and `model-adjusted` when model explanations are
+layered in through `build_model_adjusted_evidence_scene` or the browser
+extension's `buildModelAdjustedEvidenceScene`. The validator rejects any
+other value and rejects `ModelExplanationPanel` when the claim's badge is
+not `model-adjusted`. `score` is the raw ACC value; the badge renderer
 shows it next to the threshold so the reader sees the margin.
 
 ### ModelExplanationPanel
 
-Not emitted by the deterministic builder. Reserved for the Gemma scene
-generator (PR4). When Gemma populates this component, it must include a
-`summary` prop (one paragraph of plain English) and may include
+Emitted only when model explanations are supplied. This component must
+include a `summary` prop (one paragraph of plain English) and may include
 `citations` (a list of claim ids referenced in the summary). The
-validator rejects model output that uses ModelExplanationPanel without
-a `summary`.
+validator rejects model output that uses `ModelExplanationPanel` without
+a `summary`, or with a deterministic `CalibrationBadge` for the same
+claim.
 
 ## Validation rules
 
@@ -241,6 +245,8 @@ means the scene is valid. Errors include:
 - Component with unknown type.
 - Component missing required prop.
 - `CalibrationBadge` with invalid `source` value.
+- `ModelExplanationPanel` paired with a non-`model-adjusted`
+  `CalibrationBadge`.
 - `claim_count` mismatched with the number of `ClaimCard` components.
 - Claim missing one of the always-present components.
 
@@ -249,7 +255,7 @@ Tests in `tests/test_a2ui_scene.py` enumerate every rejection condition.
 
 ## Reading order
 
-The deterministic builder emits components in this order per claim:
+The builders emit components in this order per claim:
 
 1. ClaimCard
 2. SourceCollapsePanel (conditional)
@@ -258,7 +264,8 @@ The deterministic builder emits components in this order per claim:
 5. PenaltyList (conditional)
 6. ContradictionPanel (conditional)
 7. NextChecks
-8. CalibrationBadge
+8. ModelExplanationPanel (model-adjusted only)
+9. CalibrationBadge
 
 Renderers may rearrange. The scene contract is that every ClaimCard
 appears before any other component for that claim and that

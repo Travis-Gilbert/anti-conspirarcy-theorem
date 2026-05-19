@@ -5,7 +5,8 @@
  * The validator is the security boundary that rejects Gemma output that
  * drops props, alters ACC scores, or invents claim ids. The builder
  * converts the existing scoring.js article-level + per-claim output into
- * the same scene shape the deterministic Python builder emits.
+ * the same scene shape the Python builder emits, optionally layering
+ * model-written explanation panels on top of deterministic ACC scores.
  *
  * Shape contract is documented in docs/a2ui-scene-schema.md.
  */
@@ -17,6 +18,7 @@ import {
   COMPONENT_CALIBRATION_BADGE,
   COMPONENT_CLAIM_CARD,
   COMPONENT_CONTRADICTION_PANEL,
+  COMPONENT_MODEL_EXPLANATION_PANEL,
   COMPONENT_NEXT_CHECKS,
   COMPONENT_PENALTY_LIST,
   COMPONENT_RULE_CHECKLIST,
@@ -93,21 +95,66 @@ function makeComponent(type, claimId, props) {
   };
 }
 
+function normalizeModelExplanations(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return {};
+  }
+  return value;
+}
+
+function modelExplanationProps(value) {
+  let summary = "";
+  let citations = [];
+
+  if (typeof value === "string") {
+    summary = value.trim();
+  } else if (value && typeof value === "object" && !Array.isArray(value)) {
+    summary = String(value.summary ?? "").trim();
+    if (Array.isArray(value.citations)) {
+      citations = value.citations.map((item) => String(item).trim()).filter(Boolean);
+    }
+  } else {
+    return null;
+  }
+
+  if (!summary) {
+    return null;
+  }
+
+  const props = { summary };
+  if (citations.length) {
+    props.citations = citations;
+  }
+  return props;
+}
+
+function hasModelExplanation(modelExplanations) {
+  return Object.values(modelExplanations).some((value) => modelExplanationProps(value));
+}
+
 /**
- * Build a deterministic EvidenceCockpit scene from scoring.js output.
+ * Build an EvidenceCockpit scene from scoring.js output.
  *
  * @param {object} scoreResult - The object returned by scoreText() in
  *   inference/scoring.js. Must include `claims`, `features`, `rules`,
  *   `penalties`, `actions`, `weight_profile_used`, etc.
  * @param {object} [options]
- * @param {string} [options.calibrationSource] - "deterministic" by default.
- *   Set to "model-adjusted" only when Gemma has rewritten explanation cells.
+ * @param {string} [options.calibrationSource] - Defaults to "model-adjusted"
+ *   when model explanations are present; otherwise "deterministic".
+ * @param {object} [options.modelExplanations] - Mapping of claim id to
+ *   explanation summary or `{summary, citations}` payload.
+ * @param {string} [options.summary] - Optional scene-level summary.
  * @param {number} [options.threshold] - Suspect threshold; defaults to 0.55.
  * @returns {object} A JSON-serializable EvidenceCockpit scene.
  */
 export function buildEvidenceScene(scoreResult, options = {}) {
-  const calibrationSource = options.calibrationSource || "deterministic";
+  const modelExplanations = normalizeModelExplanations(
+    options.modelExplanations ?? scoreResult?.model_explanations ?? scoreResult?.modelExplanations,
+  );
+  const calibrationSource = options.calibrationSource
+    || (hasModelExplanation(modelExplanations) ? "model-adjusted" : "deterministic");
   const threshold = typeof options.threshold === "number" ? options.threshold : 0.55;
+  const summary = String(options.summary ?? scoreResult?.summary ?? "").trim();
 
   if (!CALIBRATION_SOURCES.includes(calibrationSource)) {
     throw new Error(`invalid calibrationSource: ${calibrationSource}`);
@@ -144,6 +191,7 @@ export function buildEvidenceScene(scoreResult, options = {}) {
       },
       weights: weightsByProfile,
       calibrationSource,
+      modelExplanation: modelExplanationProps(modelExplanations[claimId]),
       threshold,
     }));
   } else {
@@ -154,6 +202,7 @@ export function buildEvidenceScene(scoreResult, options = {}) {
         record: claim,
         weights: weightsByProfile,
         calibrationSource,
+        modelExplanation: modelExplanationProps(modelExplanations[claim.id]),
         threshold,
       }));
     }
@@ -165,12 +214,28 @@ export function buildEvidenceScene(scoreResult, options = {}) {
     acc_version: ALGORITHM_VERSION,
     claim_count: claims.length || 1,
     threshold,
-    summary: "",
+    summary,
     components,
   };
 }
 
-function buildComponentsForRecord({ claimId, claimText, record, weights, calibrationSource, threshold }) {
+export function buildModelAdjustedEvidenceScene(scoreResult, modelExplanations, options = {}) {
+  return buildEvidenceScene(scoreResult, {
+    ...options,
+    modelExplanations,
+    calibrationSource: "model-adjusted",
+  });
+}
+
+function buildComponentsForRecord({
+  claimId,
+  claimText,
+  record,
+  weights,
+  calibrationSource,
+  modelExplanation,
+  threshold,
+}) {
   const list = [];
   const features = record.feature_breakdown || {};
 
@@ -230,6 +295,10 @@ function buildComponentsForRecord({ claimId, claimText, record, weights, calibra
       })),
     }),
   );
+
+  if (modelExplanation) {
+    list.push(makeComponent(COMPONENT_MODEL_EXPLANATION_PANEL, claimId, modelExplanation));
+  }
 
   list.push(
     makeComponent(COMPONENT_CALIBRATION_BADGE, claimId, {
@@ -464,6 +533,8 @@ export function validateEvidenceScene(scene) {
 
   const claimCardIds = new Set();
   const componentsByClaim = new Map();
+  const calibrationSourceByClaim = new Map();
+  const modelExplanationClaims = new Set();
 
   scene.components.forEach((component, index) => {
     if (!component || typeof component !== "object") {
@@ -494,10 +565,15 @@ export function validateEvidenceScene(scene) {
       }
     }
 
-    if (type === COMPONENT_CALIBRATION_BADGE && !CALIBRATION_SOURCES.includes(props.source)) {
-      errors.push(
-        `component[${index}] CalibrationBadge has invalid source "${props.source}"`,
-      );
+    if (type === COMPONENT_CALIBRATION_BADGE) {
+      if (!CALIBRATION_SOURCES.includes(props.source)) {
+        errors.push(
+          `component[${index}] CalibrationBadge has invalid source "${props.source}"`,
+        );
+      }
+      if (typeof id === "string" && id.includes(".") && typeof props.source === "string") {
+        calibrationSourceByClaim.set(id.slice(id.indexOf(".") + 1), props.source);
+      }
     }
 
     if (type === COMPONENT_CLAIM_CARD) {
@@ -510,6 +586,9 @@ export function validateEvidenceScene(scene) {
         componentsByClaim.set(claimId, new Set());
       }
       componentsByClaim.get(claimId).add(type);
+      if (type === COMPONENT_MODEL_EXPLANATION_PANEL) {
+        modelExplanationClaims.add(claimId);
+      }
     }
   });
 
@@ -528,6 +607,14 @@ export function validateEvidenceScene(scene) {
       if (!present.has(componentType)) {
         errors.push(`claim "${claimId}" missing required component: ${componentType}`);
       }
+    }
+    if (
+      modelExplanationClaims.has(claimId)
+      && calibrationSourceByClaim.get(claimId) !== "model-adjusted"
+    ) {
+      errors.push(
+        `claim "${claimId}" has ModelExplanationPanel but CalibrationBadge source is not model-adjusted`,
+      );
     }
   }
 

@@ -7,11 +7,18 @@ import json
 import networkx as nx
 import pytest
 
-from theseus_acc import build_evidence_scene, compute_acc, validate_evidence_scene
+from theseus_acc import (
+    build_evidence_scene,
+    build_model_adjusted_evidence_scene,
+    compute_acc,
+    validate_evidence_scene,
+)
 from theseus_acc.schemas import (
     ALWAYS_PRESENT_COMPONENTS,
+    COMPONENT_CALIBRATION_BADGE,
     COMPONENT_CLAIM_CARD,
     COMPONENT_CONTRADICTION_PANEL,
+    COMPONENT_MODEL_EXPLANATION_PANEL,
     COMPONENT_PENALTY_LIST,
     COMPONENT_SOURCE_COLLAPSE_PANEL,
     SCENE_NAME,
@@ -92,6 +99,39 @@ def test_scene_passes_validator_when_built_from_real_report():
     scene = build_evidence_scene(report)
     errors = validate_evidence_scene(scene)
     assert errors == []
+
+
+def test_model_adjusted_scene_emits_explanation_panel_and_badge_source():
+    g = _well_supported_graph()
+    report = compute_acc(g, {'claim_1'})
+    scene = build_model_adjusted_evidence_scene(
+        report,
+        claim_texts={'claim_1': g.nodes['claim_1']['text']},
+        model_explanations={
+            'claim_1': {
+                'summary': 'The model highlights three independent source branches.',
+                'citations': ['claim_1', '  '],
+            },
+        },
+        summary='The claim is strongly supported after model-side explanation.',
+    )
+
+    panel = next(
+        (c for c in scene['components'] if c['type'] == COMPONENT_MODEL_EXPLANATION_PANEL),
+        None,
+    )
+    badge = next(
+        (c for c in scene['components'] if c['type'] == COMPONENT_CALIBRATION_BADGE),
+        None,
+    )
+
+    assert panel is not None
+    assert panel['props']['summary'].startswith('The model highlights')
+    assert panel['props']['citations'] == ['claim_1']
+    assert badge is not None
+    assert badge['props']['source'] == 'model-adjusted'
+    assert scene['summary'].startswith('The claim is strongly supported')
+    assert validate_evidence_scene(scene) == []
 
 
 def test_scene_includes_required_components_per_claim():
@@ -217,11 +257,30 @@ def test_validator_rejects_invalid_calibration_source():
     g = _well_supported_graph()
     scene = build_evidence_scene(compute_acc(g, {'claim_1'}))
     for component in scene['components']:
-        if component['type'] == 'CalibrationBadge':
+        if component['type'] == COMPONENT_CALIBRATION_BADGE:
             component['props']['source'] = 'made-up-source'
             break
     errors = validate_evidence_scene(scene)
     assert any('CalibrationBadge' in e and 'invalid source' in e for e in errors)
+
+
+def test_validator_rejects_model_explanation_with_deterministic_badge():
+    g = _well_supported_graph()
+    scene = build_evidence_scene(compute_acc(g, {'claim_1'}))
+    scene['components'].insert(
+        -1,
+        {
+            'type': COMPONENT_MODEL_EXPLANATION_PANEL,
+            'id': 'ModelExplanationPanel.claim_1',
+            'props': {'summary': 'Model-generated explanation should change calibration source.'},
+        },
+    )
+
+    errors = validate_evidence_scene(scene)
+    assert any(
+        'ModelExplanationPanel' in e and 'model-adjusted' in e
+        for e in errors
+    )
 
 
 def test_validator_reports_claim_count_mismatch():

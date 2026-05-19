@@ -1,10 +1,9 @@
 """Schema constants for the EvidenceCockpit A2UI scene shape.
 
-These constants describe the shape the deterministic scene builder
-(theseus_acc.a2ui.build_evidence_scene) emits. The browser-extension
-A2UI catalog renders against the same shape; the strict schema validator
-in browser-extension/src/model/schemaValidator.js mirrors these names
-when rejecting model output.
+These constants describe the shape the EvidenceCockpit scene builders emit.
+The browser-extension A2UI catalog renders against the same shape; the strict
+schema validator in browser-extension/src/model/schemaValidator.js mirrors
+these names when rejecting model output.
 
 Intentionally string-based and lightweight: this module ships in the
 public package, which avoids pulling pydantic or jsonschema as a runtime
@@ -75,10 +74,9 @@ REQUIRED_PROPS_BY_COMPONENT = {
     COMPONENT_MODEL_EXPLANATION_PANEL: MODEL_EXPLANATION_REQUIRED_PROPS,
 }
 
-# Calibration sources. The deterministic builder always emits
-# 'deterministic'. The Gemma scene generator must explicitly set
-# 'model-adjusted' when it modifies the deterministic scene; the
-# validator rejects model output that pretends to be deterministic.
+# Calibration sources. Plain deterministic scenes emit 'deterministic'.
+# Scenes with model explanations must set 'model-adjusted'; validators reject
+# explanation panels that pretend to be deterministic.
 CALIBRATION_SOURCES = ('deterministic', 'model-adjusted')
 
 # The set of components every well-formed scene must include for at
